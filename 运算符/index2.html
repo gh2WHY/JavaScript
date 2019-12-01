@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin:0;
+        }
+        table {
+            width: 600px;
+            border-collapse: collapse;
+            margin:50px auto;
+        }
+        td {
+            width: 100px;
+            height: 100px;
+            border:1px solid #000;
+            text-align: center;
+        }
+        .first {
+            height: 60px;
+        }
+        .second {
+            height: 150px;
+        }
+        .picture {
+            width: 150px;
+           background-image: url('https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1072294155,2795048520&fm=26&gp=0.jpg');
+           background-size: cover;
+        }
+        .special {
+            width: 200px;
+        }
+        .num > span {
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            background-color:#666;
+            color:white;
+        }
+        .num > .number {
+            background-color: white;
+            color:#000;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr class="first">
+            <td>图片</td>
+            <td>单价</td>
+            <td class="special">数量</td>
+            <td>总价</td>
+        </tr>
+        <tr class="second">
+            <td class="picture"></td>
+            <td>20</td>
+            <td class="num">
+                <span class="sub">-</span>
+                <span class="number">0</span>
+                <span class="add">+</span>
+            </td>
+            <td class="price">0</td>
+        </tr>
+    </table>
+    <script>
+        var oSub=document.querySelector('.sub');
+        var oAdd=document.querySelector('.add');
+        var oNumber=document.querySelector('.number');
+        var oPrice=document.querySelector('.price');
+        number=0;
+        oAdd.onclick = function() {
+            number++;
+            oNumber.innerHTML=number;
+            oPrice.innerHTML=number*20;
+        }
+        oSub.onclick = function() {
+            if (number>0){
+                number--;
+            }   
+            oNumber.innerHTML=number;
+            oPrice.innerHTML=number*20;
+        }
+    </script>
+</body>
+</html>
