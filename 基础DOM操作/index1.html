@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    * {
+        margin:0;
+    }
+    div {
+        width: 200px;
+        height: 80px;
+        background: skyblue;
+        color:white;
+        font-size:24px;
+        text-align: center;
+        line-height: 80px;
+    }
+    .box1 {
+        margin:50px auto;
+    } 
+    .box2 {
+        margin:80px auto;
+    }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <script>
+        var oBox1 = document.querySelector('.box1')
+        var oBox2 = document.querySelector('.box2')
+        oBox1.onmouseenter = function() {
+            oBox2.innerHTML="哈哈哈哈哈"
+        }
+        oBox1.onmouseleave = function() {
+            oBox2.innerHTML=" "
+        }
+        oBox2.onmouseenter = function() {
+            oBox1.innerHTML="小仙女来咯"
+        }
+        oBox2.onmouseleave = function() {
+            oBox1.innerHTML=" "
+        }
+    </script>
+</body>
+</html>
