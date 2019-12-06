@@ -64,9 +64,10 @@
         var Oipt=document.getElementById('button')
         var Otext=document.getElementById('text')
         Oipt.onclick=function() {
-           
-            Oul.innerHTML+='<li>'+Otext.value+'</li>'
-            Otext.value=''
+            if(Otext.value!='') {
+                Oul.innerHTML+='<li>'+Otext.value+'</li>'
+                Otext.value=''
+            } 
         }
     </script>
 </body>
