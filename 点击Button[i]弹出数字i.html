@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>弹数字</title>
+    <style>
+        button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+    <script>
+        var btns=document.querySelectorAll('button')
+        for(var i = 0; i <= btns.length; ++i) {
+            btns[i].index=i+1
+            btns[i].onclick=function() {
+                // console.info(this.index)
+                alert(this.index)
+            }
+        }
+    </script>
+</body>
+</html>
