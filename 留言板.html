@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>留言提交</title>
+    <style>
+        * h1 ul li {
+            margin: 0;
+        }
+        ul {
+            list-style: none;
+            margin-left:0;
+        }
+        .container {
+            width: 500px;
+            height: 170px;
+            margin: 60px auto;
+        }
+        textarea {
+            width: 500px;
+            height: 150px;
+            border: 1px solid #000;
+        }
+        #button {
+            float: right;
+        }
+        .list {
+            width: 500px;
+            /* height: 200px; */
+            margin: 5px auto;
+        }
+        .list > li {
+            width: 500px;
+            height: 40px;
+            border-bottom: 1px dotted #999;
+            font-size:16px;
+            line-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <textarea name="" id="text" cols="30" rows="10"></textarea>
+        <input type="submit" id="button" value="提交">
+    </div>
+    <ul class="list">
+        <!-- <li>马兰开花二十一</li>
+        <li>二八二五六</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li> -->
+    </ul>
+    <script>
+        var Oul=document.querySelector('.list')
+        var Oipt=document.getElementById('button')
+        var Otext=document.getElementById('text')
+        Oipt.onclick=function() {
+           
+            Oul.innerHTML+='<li>'+Otext.value+'</li>'
+            Otext.value=''
+        }
+    </script>
+</body>
+
+</html>
