@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1551307_9311g1nsfli.css">
+    <style>
+        * {
+            margin: 0;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .nav {
+            width: 50px;
+             height: 580px;
+             
+        }
+        .menu {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 100%; 
+            background-color: #666;
+            transition: all .3s;
+        }
+        .nav>.menu>ul>li {
+            width: 50px;
+            height: 36px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .nav>.menu>ul>li:first-child {
+            margin-top: 60px;
+        }
+        .control {
+            position: absolute;
+            bottom:70px;
+            left:0;
+            width: 50px;
+            height: 50px;
+            text-align:center;
+            line-height: 50px;
+            background-color: #fff;
+        }
+        .iconfont {
+            font-size:26px;
+            transition: all .3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="menu">
+            <ul>
+                <li>
+                    <img src="images/bq1.png">
+                </li>
+                <li>
+                    <img src="images/bq2.png">
+                </li>
+                <li>
+                    <img src="images/bq3.png">
+                </li>
+                <li>
+                    <img src="images/bq4.png">
+                </li>
+                <li>
+                    <img src="images/1.jpg" width="36" height="36">
+                </li>
+            </ul>
+        </div>
+        <div class="control">
+            <i class="iconfont icon-jiantouxiangzuo"></i>
+        </div>
+    </div>
+    <script>
+        var OBtn = document.querySelector('.control')
+        var OMenu = document.querySelector('.menu')
+        var ODic=document.querySelector('.iconfont')
+        var IsShow = true
+        console.info(OBtn)
+        console.info(OMenu)
+        console.info(ODic)
+        OBtn.onclick = function() {
+            if(IsShow) {
+                OMenu.style.left = "-50px"
+                ODic.className='iconfont icon-jiantouxiangyou'
+            }else {
+                OMenu.style.left = 0  
+                ODic.className='iconfont icon-jiantouxiangzuo'
+            }
+            IsShow =! IsShow
+        }
+    </script>
+</body>
+</html>
