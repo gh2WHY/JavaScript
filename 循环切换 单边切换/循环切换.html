@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>循环切换 单边切换</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Microsoft yahei, serif;
+        }
+
+        #banner {
+            position: relative;
+            width: 600px;
+            border: 1px solid #ccc;
+            margin: 50px auto;
+            height: 375px;
+        }
+
+        #banner ul li {
+            position: absolute;
+            list-style: none;
+        }
+
+        #banner ul li img {
+            width: 600px;
+            height: 375px;
+            display: none;
+        }
+
+        #banner p {
+            position: absolute;
+            width: 100%;
+            line-height: 25px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+
+        #banner p.top {
+            top: 0;
+        }
+
+        #banner p.bottom {
+            bottom: 0;
+        }
+
+        #banner a {
+            position: absolute;
+            top: 50%;
+            text-decoration: none;
+            width: 40px;
+            color: #fff;
+            font-size: 25px;
+            margin-top: -15px;
+            line-height: 30px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        #banner a.prev {
+            left: 0;
+
+        }
+
+        #banner a.next {
+            right: 0;
+        }
+
+        .btnBar {
+            position: relative;
+            width: 600px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .btnBar button {
+            padding: 10px;
+            background-color: #ccc;
+        }
+
+        .btnBar button.active {
+            background-color: red;
+            color: #fff;
+        }
+
+        #banner ul li img.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="banner">
+        <ul>
+            <li>
+                <img src="images/1.jpg" alt="" class="show">
+            </li>
+            <li>
+                <img src="images/2.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/3.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/4.jpg" alt="">
+            </li>
+            <li>
+                <img src="images/5.jpg" alt="">
+            </li>
+        </ul>
+        <p class='top'>toptoptop</p>
+        <!-- 左右按钮 -->
+        <a class='prev' href="javascript:void(0);">&lt;</a>
+        <a class='next' href="javascript:void(0);">&gt;</a>
+    </div>
+    <div class="btnBar">
+        <button class='active'>正常模式</button>
+        <button>循环模式</button>
+    </div>
+    <script>
+        var oprev = document.querySelector('.prev')
+        var onext = document.querySelector('.next')
+        var oimgs = document.querySelectorAll('#banner > ul > li > img')
+        var oTop = document.querySelector('.top')
+        var obtns = document.querySelectorAll('.btnBar > button')
+        var index = 0
+        var Ishow = true
+        // console.info(oprev)
+        // console.info(onext)
+        // console.info(oimgs)
+        // console.info(obtns)
+        // 左边按钮添加点击事件
+        oprev.onclick = function () {
+            index--
+            if (Ishow) {
+                 // 正常模式
+                if (index < 0) {
+                    index = 0
+                }
+                oimgs[index].classList.add('show')
+                oimgs[index + 1].classList.remove('show')
+            } else {
+                // 循环模式
+                if (index < 0) index = 4
+                oimgs[index].classList.add('show')
+                if (index === 4) {
+                    oimgs[0].classList.remove('show')
+                } else {
+                    oimgs[index + 1].classList.remove('show')
+                }
+            }
+            // 控制当前页面处于第几张图片
+            oTop.innerHTML = index + 1 + "/5"
+        }
+        // 右边按钮添加点击事件
+        onext.onclick = function () {
+            index++
+            if (Ishow) {
+                // 正常模式
+                if (index > 4) {
+                    index = 4
+                }
+                oimgs[index].classList.add('show')
+                oimgs[index - 1].classList.remove('show')
+            } else {
+                // 循环模式
+                if (index > 4) index = 0
+                oimgs[index].classList.add('show')
+                if (index === 0) {
+                    oimgs[4].classList.remove('show')
+                } else {
+                    oimgs[index - 1].classList.remove('show')
+                }
+            }
+            oTop.innerHTML = index + 1 + "/5"
+        }
+
+        // 选中正常模式
+        obtns[0].onclick = function() {
+            Ishow=true
+            obtns[0].classList.add('active')
+            obtns[1].classList.remove('active')
+            // console.info(Ishow)
+        }
+
+        // 选中循环模式
+        obtns[1].onclick = function() {
+            Ishow=false
+            obtns[1].classList.add('active')
+            obtns[0].classList.remove('active')
+            // console.info(Ishow)
+        }
+        oTop.innerHTML = index + 1 + "/5"
+    </script>
+</body>
+</html>
