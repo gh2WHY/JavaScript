@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content=" ">
+    <title>自定义复选框</title>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1551390_ajk2jjgflto.css">
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        body {
+            font-size: 14px;
+            font-family: "微软雅黑";
+        }
+
+        #check {
+            width: 620px;
+            margin: 50px auto 0px;
+        }
+
+        #check h3 {
+            line-height: 35px;
+            font-size: 20px;
+            border-bottom: 1px dashed #666;
+            margin-bottom: 10px;
+        }
+
+        #check ul li {
+            float: left;
+            text-indent: 20px;
+            line-height: 35px;
+            font-size: 16px;
+            margin: 0px 10px;
+            background: url("images/1.jpg") no-repeat 0px 6px;
+            background-size: 20px 20px;
+            cursor: pointer;
+        }
+        #check ul li.ck {
+            background: url("images/2.jpg") no-repeat 0px 6px;
+            background-size: 25px 25px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id="check">
+        <h3>你最喜欢的水果</h3>
+        <ul>
+            <li>
+                苹果
+            </li>
+            <li>
+                <!-- <i class="iconfont icon-monitorbg"></i> -->
+                梨子
+            </li>
+            <li>
+                <!-- <i class="iconfont icon-monitorbg"></i> -->
+                香蕉
+            </li>
+            <li>
+                <!-- <i class="iconfont icon-monitorbg"></i> -->
+                葡萄
+            </li>
+            <li>
+                <!-- <i class="iconfont icon-monitorbg"></i> -->
+                西瓜
+            </li>
+            <li>
+                <!-- <i class=" iconfont "></i> -->
+                芒果
+            </li>
+        </ul>
+    </div>
+    <script>
+        var options = document.querySelectorAll('#check > ul > li')
+        var len=options.length
+        // console.info(options)
+        // console.info(len)
+        for (var i = 0; i < len; i++) {
+            options[i].temIndex = i
+           options[i].onclick = function () {
+               options[this.temIndex].classList.toggle('ck')
+            }
+        }
+    </script>
+
+</body>
+
+</html>
