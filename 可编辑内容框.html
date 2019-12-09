@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Fly">
+    <title>可编辑内容框</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Microsoft yahei, serif;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #box ul li {
+            height: 50px;
+            padding-left: 50px;
+            line-height: 50px;
+            font-size: 12px;
+            border-bottom: 1px solid red;
+        }
+
+        #box ul li span {
+            float: left;
+        }
+
+        #box ul li input {
+            display: none;
+            float: left;
+            margin-top: 14px;
+            color: #999;
+        }
+
+        #box ul li p {
+            float: left;
+            width: 50px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            margin-top: 12px;
+            margin-left: 10px;
+            background: #000;
+            color: #fff;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li>
+                <span>点击修改</span>
+                <input type="text" value="点击修改">
+                <p>修改</p>
+            </li>
+            <li>
+                <span>点击修改</span>
+                <input type="text" value="点击修改">
+                <p>修改</p>
+            </li>
+            <li>
+                <span>点击修改</span>
+                <input type="text" value="点击修改">
+                <p>修改</p>
+            </li>
+            <li>
+                <span>点击修改</span>
+                <input type="text" value="点击修改">
+                <p>修改</p>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var ospans = document.querySelectorAll('#box > ul > li >span')
+        var ops = document.querySelectorAll('#box > ul > li > p ')
+        var oipts = document.querySelectorAll('#box > ul > li > input')
+
+        // console.info(ospans)
+        // console.info(ops)
+        // console.info(oipt)
+        // 直接修改
+        for (let i = 0; i < ops.length; ++i) {
+            ops[i].onclick = function () {
+                if (ops[i].innerHTML == '修改') {
+                    ospans[i].style.display = 'none'
+                    oipts[i].style.display = 'block'
+                    ops[i].innerHTML = '确定'
+                    oipts[i].value= ospans[i].innerHTML
+                } else {
+                    ospans[i].style.display = 'block'
+                    oipts[i].style.display = 'none'
+                    ops[i].innerHTML = '修改'
+                    ospans[i].innerHTML = oipts[i].value
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
