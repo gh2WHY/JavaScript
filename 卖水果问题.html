@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        for (var peach = 0; peach < 100; ++peach) {
+            for (var apple = 0; apple < 100/3; ++apple) {
+                for (var pear = 0; pear < 100/2; ++pear) {
+                    if (pear + apple + peach == 100 && peach + apple * 3 + pear * 2 == 200) {
+                        console.log('苹果:',apple,"梨:",pear,"桃子",peach)
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
