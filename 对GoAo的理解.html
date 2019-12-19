@@ -10,9 +10,20 @@
 
 <body>
     <script>
-        // 例子1
+        // 例子1 
+        // GO {
+        //     c:undefined 888
+        //     dd:undefined function  aa() {} 
+        // }
         // function aa() {
-        //     function bb() {
+        // AO {
+        //     a:undefined 250
+        //     bb:function() {}
+        // }
+        // function bb() {
+        // AO {
+        //     b:undefined 666
+        // }
         //         var b=666;
         //         console.log(a);
         //     }
@@ -23,20 +34,44 @@
         // var dd=aa();
         // dd();
         // 例子2
-        function aa() {
-            function bb() {
-                var b = 666
-                console.log(a)
-            }
-            bb()
-            var a = 10
-            console.log(cc)
-        }
-        var cc = 888
-        aa()
+        // Go{
+        //    cc:undefined 888
+        //    aa:function(){}
+        // }
+        // function aa() {
+        // AO {
+        //     a:undefined  10
+        //     bb:function() {}
+        // }
+        // function bb() {
+        // AO{
+        //     b:undefined 666
+        // }
+        //         var b = 666
+        //          console.log(a)
+        //     }
+        //     bb()
+        //     var a = 10
+        //     console.log(cc) 
+        // }
+        // var cc = 888
+        // aa()
         // 例子3
+        // GO {
+        //    a:undefined
+        //     outeer:funcrion(){}
+        //     c:222
+        // }
         // function outer() {
-        //     function inner() {
+        // AO {
+        //     b:undefined 333
+        //     inner:function(){}
+        // }
+        // function inner() {
+        // AO {
+        //     a:undefined 111
+
+        // }
         //         var a=111;
         //         c=222;
         //         console.info(a);
@@ -48,6 +83,68 @@
         // }
         // var a=444;
         // outer();
+        // GO {
+        //     aa:undefined 10
+        //     wuwei:function() {}
+        // }
+        // var aa = 10
+        // function wuwei() {
+        // AO {
+        //     a:undefined 10
+        //     haha:function() {}
+        // }
+        //     var a = 10
+        //     function haha() {
+        //         console.log(a)
+        //     }
+        //     console.dir(haha)
+        // }
+        // wuwei()
+
+
+        /*
+          结婚了  GO
+            生了一个孩子: outer  , outer孩子会记住自己的家庭  0 GO
+
+            outer 长大了 ,结汇了 有了自己的家庭 AO(outer)
+              outer  会记住两个家庭  自己的家庭  0 AO(outer)  1 GO
+
+              生了一个孩子 叫inner
+              inner 会记住自己的家庭  爸妈 0 AO(outer)   爷爷奶奶 1 GO
+
+
+              inner 长大了 结婚了 有自己的家庭了
+                   记住所有家庭  0  AO(inner)   1 AO (outer)  2 GO
+        */
+
+        // function aa() {
+
+        //     function bb() {  
+        //         var b = 666;
+        //         console.log(a)    // undefined
+        //     }
+        //     bb();
+        //     var a = 10;
+        //     console.log(cc)   // 888
+        // }
+        // var cc = 888;
+        // aa()
+      
+
+        function aa() {
+         
+           
+            function bb() {
+
+                var b = 666;
+                console.log(a)
+            }
+            var a = 250;
+            return bb;
+        }
+        var c = 888;
+        var dd = aa();
+        dd()
     </script>
 </body>
 

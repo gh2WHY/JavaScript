@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = parseInt(prompt("请输入工作时间"));
+        var b = parseInt(prompt("请输入月薪"));
+        if (a == 0) {
+            if (b > 8000) {
+                alert("你的年终奖金为" + (b * 1.2) + "元");
+            } else {
+                alert("你的年终奖金为" + b + "元");
+            }
+        } else if (a == 1) {
+            if (b > 10000) {
+                alert("你的年终奖金为" + (b * 1.7) + "元");
+            } else {
+                alert("你的年终奖金为" + (b * 1.5) + "元");
+            }
+        } else if (a >= 2) {
+            if (b > 12000) {
+                alert("你的年终奖金为" + (b * 3.2) + "元");
+            } else {
+                alert("你的年终奖金为" + (b * 3) + "元");
+            }
+        } else {
+            alert("请输入正确的数字");
+        }
+    </script>
+</body>
+
+</html>
