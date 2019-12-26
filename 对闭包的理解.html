@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function outer() {
+            var a = 333;
+            function inner() {
+                // console.log(a)
+                return innner
+            }
+        }
+            var inn = outer()
+            inn()
+            inn()
+            inn()
+            var inna = outer();
+            inna()
+
+            /*
+              闭包: 
+                1. 内层函数调用外层函数的变量
+                2. 内层函数被移到其他的作用做去定义
+            
+            */
+
+            // function wuwei(){
+            //    var a  = 10;
+            //    function outer(){
+            //      function inner(){
+            //        a++
+            //        console.log(a)
+            //      }
+            //      return inner
+            //    }
+            //    return outer()
+            // }
+
+            // var inn = wuwei()
+
+            // function aa(){
+            //   AO{
+            //     a: 11
+            //     bb: funciotn 
+            //   }
+            //   var a = 10;
+            //   function bb(){
+            //     AO{}
+            //     a++
+            //     console.log(a) //
+            //   }
+            //   return bb
+            // }
+            // c = aa();
+
+            // c()
+            // c()
+
+
+            // 函数的变种方式
+
+            // GO{
+            //   inner: function(){
+            //     a++;
+            //     console.log(a)
+            //   }
+            //   outer: functioan(){}
+            // }
+            // var inner;
+
+            // function outer() {
+                // AO{
+                //   a :200
+                // }
+
+            //     var a = 200;
+
+            //     inner = function () {
+            //         a++;
+            //         console.log(a)
+            //     }
+            // }
+
+            // outer()
+            // inner()
+    </script>
+</body>
+
+</html>
