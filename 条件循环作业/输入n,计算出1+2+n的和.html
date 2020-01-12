@@ -10,15 +10,12 @@
 
 <body>
     <script>
-        var b;
-        var tem = prompt("请输入摄氏温度值", 25.5);
-        tem = parseInt(tem);
-        if (isNaN(tem)) {
-            alert("请输入数字!");
-        }else {
-            b = 9 / 5 * tem + 32;
-            console.info(b);
+        var n = prompt("请输入一个正整数")
+        var sum = 0;
+        for (var i = 1; i <= n; ++i) {
+            sum += i;
         }
+        console.info(sum);
     </script>
 </body>
 

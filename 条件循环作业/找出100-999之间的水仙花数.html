@@ -10,12 +10,15 @@
 
 <body>
     <script>
-        var a = Math.pow(5,7);
-        var b = Math.pow(((23 + a) / 45),2);
-        console.info(b);
-        console.info(a)
+        for (var n = 100; n <= 999; ++n) {
+            var a = parseInt(n % 10);
+            var b = parseInt((n % 100) / 10);
+            var c = parseInt(n / 100);
+            if(Math.pow(a,3)+Math.pow(b,3)+Math.pow(c,3)==n) {
+                console.log(n)
+            }
+        }
     </script>
-
 </body>
 
 </html>

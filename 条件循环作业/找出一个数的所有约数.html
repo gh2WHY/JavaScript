@@ -10,14 +10,11 @@
 
 <body>
     <script>
-        // js表示平方Math.pow,表示开方Math.sqrt
-        var area;
-        var length = prompt('请输入边长')
-        if (isNaN(length)) {
-            alert("请输入数字!");
-        } else {
-            area = Math.sqrt(3) / 2 * length;
-            console.info(area)
+        var a = parseInt(prompt("请输入一个数"));
+        for (var i = 1; i <= a; ++i) {
+            if (a % i == 0) {
+                console.log(i)
+            }
         }
     </script>
 </body>

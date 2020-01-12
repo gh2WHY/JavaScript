@@ -10,13 +10,12 @@
 
 <body>
     <script>
-        var num = prompt('请输入要计算的数字')
-        var sum=0;
-        var a = parseInt(num % 10);
-        var b = parseInt((num % 100) / 10);
-        var c = parseInt(num / 100);
-        sum = a + b + c;
-        console.info(sum)
+        for (var i = 1; i <= 60; i++) {
+            var n = i % 10
+            if (i % 7 !== 0||n !== 7) {
+                console.log(i)
+            }
+        }
     </script>
 </body>
 
