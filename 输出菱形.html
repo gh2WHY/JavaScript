@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        document.write("实心菱形：");
+        document.write("<br>");
+        var m = 7;
+        for (var i = 0; i < m; i++) {
+            var t = 0; //t是用来存放距离边界需要多少空格
+            if (i >= m / 2) {// >是m为奇数的情况下的判断，=是m为偶数的情况下的判断，这里将过半的那些i值转换为与它对称的i值
+                t = m - 1 - i;
+            } else {
+                t = i;
+            }
+            for (var j = 1; j <= m; j++) {
+                if (j >= (m + 1) / 2 - t && j <= (m + 1) / 2 + t) {
+                    document.write("*");
+                } else {
+                    document.write("<span style='white-space:pre;'>" + " " + "</span>");
+                }
+            }
+            document.write("<br>");
+        }
+    </script>
+</body>
+
+</html>
