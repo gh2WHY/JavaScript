@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        pre {
+            font-size: 18px;
+            font-weight: bolder;
+        }
+        /* span {
+            font-size: 24px;
+            background-color: turquoise;
+        } */
+    </style>
+</head>
+
+<body>
+    <span>将</span>
+    <input type="text" class="origin">
+    <span>替换为</span>
+    <input type="text" class="mod">
+    <button class="replace">替换</button><br>
+    <input type="text" class="aimText">
+    <button class="search">查找</button>
+    <pre class="text">
+        借
+        专辑：平凡的一天
+        歌手：毛不易
+        来源：毛不易
+        作词:毛不易
+        作曲:毛不易
+        编曲Arranger ：赵兆 宋涛
+        借一盏午夜街头 昏黄灯光
+        照亮那坎坷路上人影一双
+        借一寸三九天里 冽冽暖阳
+        融这茫茫人间刺骨凉
+        借一泓古老河水 九曲回肠
+        带着那摇晃烛火 漂往远方
+        借一段往日旋律 婉转悠扬
+        把这不能说的轻轻唱
+        被这风吹散的人说他爱得不深
+        被这雨淋湿的人说他不会冷
+        无边夜色到底还要蒙住多少人
+        它写进眼里 他不敢承认
+        借一抹临别黄昏悠悠斜阳
+        为这漫漫余生添一道光
+    </pre>
+    <script>
+        var reBtn = document.querySelector('.replace')
+        var input1 = document.querySelector('.origin'),
+            input2 = document.querySelector('.mod'),
+            text = document.querySelector('.text')
+        // console.log(reBtn,input1,input2)
+        reBtn.onclick = function () {
+            var value1 = input1.value,
+                value2 = input2.value
+            // console.log(value1,value2)
+            if (value1 === '' || value2 === '') {
+                alert('请输入字符')
+                return
+            } else {
+                var result = text.innerHTML.indexOf(value1)
+                if (result !== -1) {
+                    var reg = new RegExp(value1, 'g')
+                    text.innerHTML = text.innerHTML.replace(reg, value2)
+                } else {
+                    alert('你要替换的字符串不存在')
+                }
+            }
+        }
+
+        // 查找文字
+        var searchBtn = document.querySelector('.search'),
+            aimText = document.querySelector('.aimText')
+        searchBtn.onclick = function () {
+            var value = aimText.value
+            // console.log(value)
+            if (value === '') {
+                alert('请输入你要查找的字符')
+                return
+            }
+            var result = text.innerHTML.indexOf(value) //查找完成返回下标,找不到返回-1
+            // console.log(result)
+            if (result!==-1) {
+                var reg = new RegExp(value, 'g')
+                text.innerHTML = text.innerHTML.replace(reg, '<span style="color:white;font-size:24px;background-color:#ff7979">' + value + '</span>')
+            }else {
+                alert('你查找的字符串不存在')
+            }
+        }
+    </script>
+</body>
+
+</html>
