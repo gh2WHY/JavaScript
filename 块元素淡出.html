@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin:10px auto;
+            padding:0;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+        .fadeout{/*淡出，渐渐消失*/
+            opacity: 0;
+            transition: 1s linear;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">你好</div>
+    <div class="box">我是</div>
+    <div class="box">小仙女</div>
+    <div class="box">再见</div>
+
+    <script>
+        var boxs=document.querySelectorAll('.box')
+        for( var i = 0, length = boxs.length; i < length; i++ ){
+        boxs[i].onclick = function () {
+            console.log(this)
+            this.classList.toggle('fadeout') //toggle 有则删除无则删除
+            //如何删除一个元素，首先找到父元素，父元素.removeChild(element)
+            //setTimeout写在当前box元素的onclick属性上
+            setTimeout(function () {//没有挂载在任何对象上，this默认指向window
+                this.parentElement.removeChild(this)
+            }.bind(this), 1000);//this就是当前这个元素
+
+        }
+    }
+    </script>
+</body>
+</html>
