@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .banner {
+            position: relative;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            margin: 60px auto;
+            width: 600px;
+            height: 375px;
+            /* border: 1px solid rgba(0, 0, 0, 0.5); */
+        }
+
+        .banner>ul>li {
+            position: absolute;
+            list-style: none;
+        }
+
+        .banner ul li img {
+            width: 600px;
+            height: 375px;
+            display: none;
+        }
+
+        .banner>.top {
+            position: absolute;
+            display: block;
+            top:0;
+            width: 100%;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .banner > a {
+            position: absolute;
+            display: block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            text-decoration: none;
+            font-size: 20px;
+            line-height: 30px;
+            text-align: center;
+            color: white;
+            top: 50%;
+        }
+
+        .banner>.next {
+            right: 0;
+        }
+
+        .banner ul li img.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <ul>
+            <li>
+                <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3529402346,570658824&fm=26&gp=0.jpg"
+                    alt="" class="show">
+            </li>
+            <li>
+                <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1212787456,3335140443&fm=26&gp=0.jpg"
+                    alt="">
+            </li>
+            <li>
+                <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1164487775,3540574714&fm=26&gp=0.jpg"
+                    alt="">
+            </li>
+            <li>
+                <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3546451144,3031758588&fm=26&gp=0.jpg"
+                    alt="">
+            </li>
+            <li>
+                <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3331671520,202847091&fm=26&gp=0.jpg"
+                    alt="">
+            </li>
+        </ul>
+        <p class='top'>toptoptop</p>
+        <!-- 左右按钮 -->
+        <a class='prev'>&lt;</a>
+        <a class='next'>&gt;</a>
+    </div>
+    <script>
+        var Oprev = document.querySelector('.prev')
+        var Onext = document.querySelector('.next')
+        var OImgs = document.querySelectorAll('.banner > ul > li > img')
+        var Otop = document.querySelector('.top')
+        var index = 0
+        // var Isshow=true
+        // 右边按钮添加点击事件
+        Onext.onclick = function () {
+            index++
+            if (index > 4) {
+                index = 4
+            }
+           OImgs[index].classList.add('show')
+           OImgs[index-1].classList.remove('show')
+           Otop.innerHTML=index+1+'/5'
+        }
+
+        // 左边按钮添加点击事件
+        Oprev.onclick=function() {
+            index--
+            if (index < 0) {
+                index = 0
+            }
+           OImgs[index].classList.add('show')
+           OImgs[index+1].classList.remove('show')
+           Otop.innerHTML=index+1+'/5'
+        }
+
+        // 改变图片上方的值(top值)
+        Otop.innerHTML=index+1+'/5'  //设置里面的初始值为1/5
+    </script>
+</body>
+
+</html>
