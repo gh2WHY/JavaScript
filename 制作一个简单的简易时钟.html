@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        span {
+            color: #2ecc71; 
+        }
+
+        .clock {
+            position: absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            margin: auto;
+            width: 300px;
+            height: 180px;
+            background-color: #000;
+        }
+
+        .clock > .time {
+            width: 100%;
+            height: 70px;
+            margin-top: 20px;
+            text-align: center;
+            line-height:70px;
+            font-size:40px;
+        }
+
+        .clock > .nian {
+            float: left;
+            width: 200px;
+            height: 60px;
+            text-align: center;
+            line-height:60px;
+            font-size:24px;
+        }
+
+        .clock > .week {
+            float: right;
+            width: 100px;
+            height: 60px;
+            text-align: center;
+            line-height:60px;
+            font-size:24px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <div class="time">
+            <span class="hour"></span>
+            <span>:</span>
+            <span class="minute"></span>
+            <span>:</span>
+            <span class="second"></span>
+        </div>
+        
+        <div class="nian">
+            <span class="year" id="new"></span>
+            <span id="new">年</span>
+            <span class="month" id="new"></span>
+            <span id="new">月</span>
+            <span class="date" id="new"></span>
+            <span id="new"号></span>
+        </div>
+        
+        <div class="week">
+            <span>星期</span>
+            <span class="day" id="new"></span>
+        </div>
+
+    </div>
+
+    <script>
+
+        var oyear = document.querySelector('.year'),
+            omonth = document.querySelector('.month'),
+            odate = document.querySelector('.date'),
+            oday = document.querySelector('.day'),
+            ohour = document.querySelector('.hour'),
+            ominute = document.querySelector('.minute'),
+            osecond = document.querySelector('.second')
+
+        setInterval(newFun, 1000)
+
+        function newFun() {
+            var date = new Date()
+            var year = date.getFullYear(),
+                month = parseFloat(date.getMonth()) + 1,
+                dates = date.getDate(),
+                day = date.getDay(),
+                hour = date.getHours(),
+                minute = date.getMinutes()
+                second = date.getSeconds()
+
+            if (day === 0) {
+                day = '日'
+            } else if (day === 1) {
+                day = '一'
+            } else if (day === 2) {
+                day = '二'
+            } else if (day === 3) {
+                day = '三'
+            } else if (day === 4) {
+                day = '四'
+            } else if (day === 5) {
+                day = '五'
+            } else {
+                day = '六'
+            }
+
+            oyear.innerHTML = year
+            omonth.innerHTML = month
+            odate.innerHTML = dates
+            oday.innerHTML = day
+            ohour.innerHTML = hour
+            ominute.innerHTML = minute
+            osecond.innerHTML = second
+        }
+
+    </script>
+</body>
+
+</html>
