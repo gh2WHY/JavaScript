@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>整数反转</title>
+</head>
+
+<body>
+
+    <script>
+        var reverse = function (x) {
+            var res = 0;
+            while (x) {
+                res *= 10;
+                res += x % 10; //res =res+x%10 res=0+3=3  30+2=32 320+1
+                x = parseInt(x / 10);; //x=123/10=12 12/10=2
+                //3*10=30  320
+            }
+            if (x < -2147483647 || x > 2147483647) {
+                return 0
+            }
+            return res
+        };
+        reverse(2147483649)
+    </script>
+
+</body>
+
+</html>
