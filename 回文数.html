@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回文数</title>
+</head>
+
+<body>
+    <script>
+        var num = 123321
+        //这种方法需要将数字转换为字符串
+        var isPalindrome = function (x) {
+            var string = x.toString()  //将数字转化为字符串类型
+            var str_1 = string.split('').reverse(), //利用split方法首先将字符串转化为数组,然后利用reverse方法反转数组
+                                                    
+                str_2 = str_1.join('') //利用 join方法将数组转化为字符串
+            if (string == str_2) { //比较反转后的字符串与初始字符串是否相同
+                console.log(`${string}是回文数`)
+            } else {
+                console.log(`${string}不是回文数`)
+            }
+        };
+        isPalindrome(num)
+
+        //补充 不需要将数字转为字符串的方法
+        var isPalindrome = function (x) {
+            if (x < 0) {
+                return false;
+            }
+            var tmp = x;
+            var res = 0;
+            while (x) {
+                res *= 10;
+                res += (x % 10);
+                x = parseInt(x / 10);
+            }
+            return res === tmp;
+        };
+    </script>
+</body>
+
+</html>
