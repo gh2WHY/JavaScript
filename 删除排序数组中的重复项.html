@@ -7,42 +7,41 @@
 </head>
 <body>
     <script>
-        // arr=[0,1,1,1,2,2,3,3,4]
-        // var removeDuplicates = function(nums) {
-        //     var len = nums.length
-        //     nums.forEach(function(item,index,Array){
-        //        for(var i = index+1; i < len;i++) {
-        //             if(item===nums[i]) {
-        //                 nums.splice(i,1)
-        //                 i--
-        //             }
-        //        }
-        //     });
-        //     console.log(nums)
-        //     return nums.lenght
-        // };
+        arr=[0,1,1,1,2,2,3,3,4]
+        var removeDuplicates = function(nums) {
+            var len = nums.length
+            nums.forEach(function(item,index,Array){
+               for(var i = index+1; i < len;i++) {
+                    if(item===nums[i]) {
+                        nums.splice(i,1)
+                        i--
+                    }
+               }
+            });
+            console.log(nums)
+            return nums.lenght
+        };
 
 
         //另外一种更高效的算法
-        arr = [0,1,1,1,2,2,3,3,4]
-        var removeDuplicates = function (nums) {
-            var len = nums.length
-            if(len < 2) {
-                return len
-            }
-            var j = 1 
-            for(var i = 1;i < len; ++i) {  //i=2 3 4 5
-                if(nums[i-1] != nums[i]) { //0 0 0 1( 0 1 1 ) (0 1 1 1) (0 1 2 1 2)
-                    if(i != j ) {
-                        nums[j] = nums[i]  //(1)= num[2] =1 
-                    }
-                    j++;  // j=2
-                }
-            }
-            console.log(nums)
-            return j
-        }
-       removeDuplicates(arr)
+    //     arr = [0,1,1,1,2,2,3,3,4]
+    //     var removeDuplicates = function (nums) {
+    //         var len = nums.length
+    //         if(len < 2) {
+    //             return len
+    //         }
+    //         var j = 1 
+    //         for(var i = 1;i < len; ++i) {  //i=2 3 4 5
+    //             if(nums[i-1] != nums[i]) { //0 0 0 1( 0 1 1 ) (0 1 1 1) (0 1 2 1 2)
+    //                 if(i != j ) {
+    //                     nums[j] = nums[i]  //(1)= num[2] =1 
+    //                 }
+    //                 j++;  // j=2
+    //             }
+    //         }
+    //         return j
+    //     };
+    //    removeDuplicates(arr)
     </script>
    
 </body>
