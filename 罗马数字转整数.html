@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /*  I             1
+            V             5
+            X             10
+            L             50
+            C             100
+            D             500
+            M             1000
+        */
+        var romanToInt = function (s) {
+           var len = s.length;
+           var result = 0;
+           if(len == 0) {
+               return 0;
+           }
+           for (var i = 0; i < len ; ++i) {
+               if(s[i] == 'M') {
+                   result += 1000;
+               }if(s[i] == 'D') {
+                   result += 500;
+               }if(s[i] == 'C') {
+                   result += 100;
+                   if(s[i+1] == 'D' || s[i+1] == 'M') {
+                       result -= 200;
+                   }
+               }if(s[i] == 'L') {
+                   result += 50;
+               }if(s[i] == 'X') {
+                   result += 10;
+                   if(s[i+1] == 'L' || s[i+1] == 'C') {
+                       result -= 20;
+                   }
+               }if(s[i] == 'V') {
+                   result += 5;
+               }if(s[i] == 'I') {
+                   result += 1;
+                   if(s[i+1] == 'V' || s[i+1] == 'X') {
+                       result -= 2;
+                   }
+               }
+           }
+           console.log(result)
+        };
+        romanToInt('MCMXC')
+    </script>
+</body>
+
+</html> 
