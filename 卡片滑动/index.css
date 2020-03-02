@@ -1,0 +1,43 @@
+* {
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+
+body {
+    width: 100vw;
+    height: 100vw;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.card {
+    position: absolute;
+    top:50px;
+    left:0;
+    right:0;
+    margin:auto;
+    background-color: #fff;
+}
+
+.card > img{
+    height: 286.438px;
+}
+
+div.card:nth-of-type(1) {
+    z-index: 3;
+}
+
+div.card:nth-of-type(2) {
+    transform: scale(0.97) translateY(11px);
+    z-index: 2;
+}
+
+div.card:nth-of-type(3) {
+    transform: scale(0.95) translateY(22px);
+    z-index:1;
+}
+
+.transition {
+    transition: 0.4s;
+}
