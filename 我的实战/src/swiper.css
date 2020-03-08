@@ -1,0 +1,41 @@
+/* 清除所有默认样式 */
+body,h1,h2,h3,h4,h5,h6{
+    font-family:"Microsoft YaHei",sans-serif;
+    line-height:1.35;
+}
+body,input{
+    margin:0;
+}
+p,ul,h1,h2,h3,h4,h5,h6{
+    margin-top:0;
+    margin-bottom:0;
+}
+input,td,th{
+    padding:0;
+}
+ul{
+    padding-left:0;
+    list-style-type: none;
+}
+img{
+    border-style:none;
+}
+
+.swiper-container{
+    /* display: flex; */
+    position: relative;
+    width: 500px;
+    height: 300px;
+    margin: 50px auto;
+    border: 3px solid black;
+}
+
+.swiper-container > .swiper-wrapper{
+    display: flex;
+}
+.swiper-container > .swiper-wrapper > .swiper-slide{
+    background-color: orange;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
