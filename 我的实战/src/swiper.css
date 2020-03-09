@@ -39,3 +39,11 @@ img{
     text-align: center;
     font-weight: bold;
 }
+
+.swiper-container > .swiper-wrapper > .swiper-slide:nth-of-type(2) {
+    background-color: pink;
+}
+
+.swiper-container > .swiper-wrapper > .swiper-slide:nth-of-type(3) {
+    background-color: skyblue;
+}

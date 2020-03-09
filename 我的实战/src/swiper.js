@@ -89,7 +89,8 @@ function drag(ele) {
     var move_x = 0,
         move_y = 0;
     //是否按下了鼠标
-    var is_click = false;
+    var is_click = false,
+        move_or_not = false;
     //添加时间监听
     ele.addEventListener('mousedown',function(e) {
         e.stopPropagation();
@@ -111,14 +112,16 @@ function drag(ele) {
        if(this.privateDate.direction === 'horizontal'){
         if(Math.abs(move_x) > (this.privateDate.width / 2) ){
             //如果移动距离大于一半,则切换轮播图
-            // ele.style.transform = `translate(${width}px,${height}px)`;
+            // ele.style.transform = `translate(${-width}px)`;
+            move_wrapper.call(this,this.dom.wrapper);
         }else{
             //否则,弹回原位置
         }
        }else {
 
        }
-
+       //移动结束后重新对mouse_position重新赋值
+       mouse_position = {x:e.clientX,y:e.clientY};
     }.bind(this));
 
     //鼠标抬起 
@@ -129,3 +132,5 @@ function drag(ele) {
     }.bind(this));
 }
 
+function move_wrapper (ele) {
+}
