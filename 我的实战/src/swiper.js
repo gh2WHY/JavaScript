@@ -32,7 +32,10 @@ function SelectDom(class_name) {
     // console.log(this.dom)
     //获取向左的箭头
     this.dom.prev = this.dom.root.querySelector('.prev');
+    //获取向右的箭头
     this.dom.next = this.dom.root.querySelector('.next');
+    //获取分页器
+    this.dom.pagination = this.dom.root.querySelector('.swiper-pagination');
 }
 
 // handleOption函数  用来处理配置对象
@@ -66,13 +69,16 @@ function init() {
     //给滑块容器设置宽度
     wrapper.style.width = `${width * slides.length}px`;
     wrapper.style.height = `${height}px`;
+    //给每个滑块设置切换效果,如果不设置则会显得僵硬,不圆润
+    wrapper.classList.toggle('wrapper-transition');
     //给每个滑块设置宽高
     [].forEach.call(slides, function (slide_item) {
         slide_item.style.width = `${width}px`;
         slide_item.style.height = `${height}px`;
     });
     drag.call(this, wrapper)
-
+    //是否有分页器属性,如果有,则调用生成分页器按钮函数,没有什么都不用做
+    this.dom.pagination ? make_btn.call(this) : ''
     //为两个按钮绑定事件监听
     this.dom.prev ? this.dom.prev.addEventListener('click', go_or_back.bind(this)) : '';
     this.dom.next ? this.dom.next.addEventListener('click', go_or_back.bind(this)) : '';
@@ -121,7 +127,7 @@ function drag(ele) {
         this.privateDate.move_y += e.clientY - mouse_position.y;
         // console.log(move_x,move_y)
         if (this.privateDate.direction === 'horizontal') {
-            if (Math.abs(this.privateDate.move_x) > (this.privateDate.width * 0.3)) {
+            if (Math.abs(this.privateDate.move_x - this.privateDate.index * -this.privateDate.width) >= this.privateDate.width * 0.3) {
                 //如果移动距离大于一半,则切换轮播图
                 next_or_not = true;
                 // ele.style.transform = `translate(${-width}px)`;
@@ -149,7 +155,7 @@ function drag(ele) {
         //如果next_or_not 为真,则表示可以切换到下一张
         if (next_or_not) {
             //这个判断条件还不明白
-            if (this.privateDate.move_x > this.privateDate.index * (-this.privateDate.width)) {
+            if (this.privateDate.index * - this.privateDate.width < this.privateDate.move_x) {
                 this.privateDate.index--
                 move_dis.call(this, ele);
             } else {
@@ -162,6 +168,7 @@ function drag(ele) {
             move_wrapper.call(this, ele, 'horizontal', this.privateDate.move_x)
         }
         is_click = false;
+        next_or_not = false;
     }.bind(this));
 }
 
@@ -235,3 +242,25 @@ function go_or_back(e) {
     }
 }
 
+//动态生成分页器函数
+function make_btn() {
+    var fragment = document.createDocumentFragment();
+    //将该函数中要用到的slides 和 paination 解构
+    var {slides , pagination } = this.dom;
+    // console.log('我执行了生成分页器函数');
+    //for 循环生成按钮
+    for(var i = 0 ; i < slides.length; i++) {
+        var span = document.createElement('span');
+        //给span添加之前已经设置好样式的类名
+        span.setAttribute ('class' , 'swiper-pagination-bullet');
+        span.own_index = i;
+        fragment.append(span);
+    }
+    pagination.append(fragment);
+    //给当前页面下的btn添加背景颜色
+    pagination.children[this.privateDate.index].classList.add('btn_bgc');
+     //给this.dom对象添加分页器按钮属性
+     Object.assign( this.dom, {
+        bullets: pagination.querySelectorAll('.swiper-pagination-bullet')
+    } )
+}

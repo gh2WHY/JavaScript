@@ -17,12 +17,24 @@
             <div class="swiper-slide">slider3</div>
             <div class="swiper-slide">slider4</div>
         </div>
+        <!-- 添加前进后退按钮 -->
         <div class="prev btn">&lt;</div>
         <div class="next btn">&gt;</div>
+        <!-- 添加分页器 -->
+        <div class="swiper-pagination">
+            <!-- 滑块里的每一个小点点 -->
+            <!-- 要根据滑块的多少在js中动态生成 -->
+            <!-- <span class="swiper-pagination-bullet"></span>
+            <span class="swiper-pagination-bullet"></span>
+            <span class="swiper-pagination-bullet"></span>
+            <span class="swiper-pagination-bullet"></span> -->
+        </div>
     </div>
 </body>
 <script>
-    var mySwiper = new Swiper('.swiper-container',{})
+    var mySwiper = new Swiper('.swiper-container',{
+        
+    })
     console.log( mySwiper )
 </script>
 </html>
