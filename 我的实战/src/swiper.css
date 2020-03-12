@@ -57,7 +57,7 @@ body{
 }
 
 .wrapper-transition {
-    transition: 0.6s ease-out;
+    transition: 0.5s ease-out;
 }
 
 .swiper-container > .btn {
@@ -112,5 +112,5 @@ body{
 }
 /* 权重不够被覆盖 */
 .swiper-container > .swiper-pagination >.btn_bgc {
-    background-color: #fff;
+    background-color: #74b9ff;
 }

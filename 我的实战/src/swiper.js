@@ -41,9 +41,10 @@ function SelectDom(class_name) {
 // handleOption函数  用来处理配置对象
 function handleOption(options) {
     var { direction } = options
-    //用户可能传了 可能没传 所以我们要重新赋值 horizontal[水平方向滑动]
+    Object.assign( this.privateDate, options );
+    //用户可能传了 可能没传 所以我们要重新赋值 horizontal(水平方向滑动)
     direction = direction ? direction : 'horizontal';
-    //把参数传入到privateDate[私有数据里]
+    //把参数传入到privateDate
     Object.assign(this.privateDate, {
         direction: direction
     })
@@ -79,9 +80,21 @@ function init() {
     drag.call(this, wrapper)
     //是否有分页器属性,如果有,则调用生成分页器按钮函数,没有什么都不用做
     this.dom.pagination ? make_btn.call(this) : ''
+    //判断是否有 属性,如果有就调用click_btn函数
+    this.privateDate.bullet_clickable === true ? click_btn.call(this) : '';
     //为两个按钮绑定事件监听
     this.dom.prev ? this.dom.prev.addEventListener('click', go_or_back.bind(this)) : '';
     this.dom.next ? this.dom.next.addEventListener('click', go_or_back.bind(this)) : '';
+    //判断是否需要自动轮播
+    if(this.privateDate.autoplay) {
+        //先看是否需要自动轮播
+        //判断有没有timeout,无则默认3000,有则什么操作都不需要做
+        this.privateDate.timeout ? '' : this.privateDate.timeout = 3000;
+        //调用自动轮播函数
+        autoplay.call(this);
+    }
+    //最大盒子的鼠标移入移除事件
+    container_mouse.call(this);
 }
 
 //拖拽函数
@@ -158,9 +171,11 @@ function drag(ele) {
             if (this.privateDate.index * - this.privateDate.width < this.privateDate.move_x) {
                 this.privateDate.index--
                 move_dis.call(this, ele);
+                toggle_btn_bgc.call(this);
             } else {
                 this.privateDate.index++;
                 move_dis.call(this, ele);
+                toggle_btn_bgc.call(this);
             }
         } else {//如果next_or_not为假,则表示不可以切换
             this.privateDate.move_x = this.privateDate.index * -this.privateDate.width
@@ -226,6 +241,7 @@ function go_or_back(e) {
         if( this.privateDate.direction === 'horizontal' ){
             this.privateDate.move_x = this.privateDate.index * -this.privateDate.width ;
             move_wrapper(this.dom.wrapper, this.privateDate.direction, this.privateDate.move_x)
+            toggle_btn_bgc.call(this);
         }else{
             this.privateDate.move_y = this.privateDate.index * -this.privateDate.height ;
             move_wrapper(this.dom.wrapper, this.privateDate.direction, this.privateDate.move_y)
@@ -235,6 +251,7 @@ function go_or_back(e) {
         if( this.privateDate.direction === 'horizontal' ){
             this.privateDate.move_x = this.privateDate.index * -this.privateDate.width ;
             move_wrapper(this.dom.wrapper, this.privateDate.direction, this.privateDate.move_x)
+            toggle_btn_bgc.call(this);
         }else{
             this.privateDate.move_y = this.privateDate.index * -this.privateDate.height ;
             move_wrapper(this.dom.wrapper, this.privateDate.direction, this.privateDate.move_y)
@@ -262,5 +279,73 @@ function make_btn() {
      //给this.dom对象添加分页器按钮属性
      Object.assign( this.dom, {
         bullets: pagination.querySelectorAll('.swiper-pagination-bullet')
-    } )
+    } ) //添加完之后并不会自动切换,所以还需要一个函数来自动切换
+}
+
+//设置切换小点点的背景颜色
+function toggle_btn_bgc() {
+    //先清除所有的类名,然后为当前下标元素添加bgc类名
+    // NodeList 类型,调用forEach方法
+    var {index} = this.privateDate;
+    this.dom.bullets.forEach(function(item){
+        item.classList.remove('btn_bgc')
+    });
+    this.dom.bullets[index].classList.add('btn_bgc');
+}
+
+//给小圆点添加点击事件
+function click_btn( ) {
+    //给每个小圆点绑定事件监听
+    this.dom.bullets.forEach(function(item) {
+        item.addEventListener('click',click_bullets.bind(this));
+    }.bind(this));
+    function click_bullets(e) {
+        e.stopPropagation()
+        //把私有属性里当前的下标index变成当前span标签的下标
+        this.privateDate.index = e.target.own_index;
+        //调用wrapper 移动函数
+        move_dis.call(this,this.dom.wrapper);
+        //切换小圆点类名
+        toggle_btn_bgc.call(this);
+    }
+}
+
+//自动轮播 
+/*
+    首先判断是否有autoplay 属性
+        有的话再看是否有timeout属性 有使用timeout,没有的话默认3000
+    定时器setInterval
+    每隔三秒钟切换一张图片,即index++
+    然后判断是否超过了slides的长度,如果超过,则index = 0
+    调用移动函数
+*/ 
+function autoplay() {
+    var len = this.dom.slides.length;
+    var timer = setInterval(function() {
+        // console.log(this);
+        this.privateDate.index = (++ this.privateDate.index) %  len;
+            //调用wrapper 移动函数
+            move_dis.call(this,this.dom.wrapper);
+            //切换小圆点类名
+            toggle_btn_bgc.call(this);
+    }.bind(this),this.privateDate.timeout);
+    /*由于定时器在调用时，都会返回一个整形的数字，
+    该数字代表定时器的序号，即第多少个定时器，所以定时器的清除要借助于这个返回的数字。*/
+    this.privateDate.timer = timer;
+}
+
+//当鼠标进入大盒子的时候需要取消事件监听,移除再次添加事件监听
+//给大盒子绑定鼠标进入和鼠标移除时间
+function container_mouse() {
+    var {root} = this.dom;
+    //鼠标进入 取消定时器
+    root.addEventListener('mouseenter',function(e){
+        e.stopPropagation();
+        clearInterval(this.privateDate.timer);
+    }.bind(this));
+    //鼠标离开,再次轮播
+    root.addEventListener('mouseleave',function(e) {
+        e.stopPropagation();
+        autoplay.call(this);
+    }.bind(this));
 }
