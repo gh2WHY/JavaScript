@@ -199,7 +199,7 @@ function move_wrapper(ele, direc, dis) {
 //计算移动距离的函数
 function move_dis(ele) {
     //解构width 和height
-    var { width, direction } = this.privateDate;
+    var { width, direction,height } = this.privateDate;
     if (direction == 'horizontal') {//计算在水平方向上应该移动的距离
         //计算index当前的位置
         this.privateDate.index = Math.max(Math.min(this.privateDate.index, this.dom.slides.length - 1), 0)
@@ -212,26 +212,6 @@ function move_dis(ele) {
         move_wrapper(ele, direction, this.privateDate.move_y);
     }
 }
-
-
-function move_in(ele){
-    var {previous_btn, next_btn} = this.dom;
-    ele.addEventListener('mouseenter', function (e) {
-        e.stopPropagation();
-    }.bind(this))
-    ele.addEventListener('mouseleave', function (e) {
-        e.stopPropagation();
-    }.bind(this))
-}function move_in(ele){
-    var {previous_btn, next_btn} = this.dom;
-    ele.addEventListener('mouseenter', function (e) {
-        e.stopPropagation();
-    }.bind(this))
-    ele.addEventListener('mouseleave', function (e) {
-        e.stopPropagation();
-    }.bind(this))
-}
-
 
 //写点击按钮之后的前进或后退函数
 function go_or_back(e) {
