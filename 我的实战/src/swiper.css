@@ -37,6 +37,10 @@ body{
 .swiper-container > .swiper-wrapper{
     display: flex;
 }
+
+.vertical {
+    flex-direction: column;
+}
 .swiper-container > .swiper-wrapper > .swiper-slide{
     background-color: pink;
     color: white;
