@@ -40,7 +40,7 @@ function SelectDom(class_name) {
 
 // handleOption函数  用来处理配置对象
 function handleOption(options) {
-    var { direction } = options
+    let { direction } = options
     Object.assign( this.privateDate, options );
     //用户可能传了 可能没传 所以我们要重新赋值 horizontal(水平方向滑动)
     direction = direction ? direction : 'horizontal';
@@ -56,7 +56,7 @@ function handleOption(options) {
           轮播图容器的宽度和高度 -> 给滑块和滑块容器设置宽度和高度
 */
 function init() {
-    var width = this.dom.root.offsetWidth,
+    let width = this.dom.root.offsetWidth,
         height = this.dom.root.offsetHeight;
     //把这些值放入option 配置对象中
     Object.assign(this.privateDate, {
@@ -66,7 +66,7 @@ function init() {
     });
 
     //解构对象,得到dom中的wrapper和slides
-    var { wrapper, slides } = this.dom;
+    let { wrapper, slides } = this.dom;
     //给滑块容器设置宽度
     wrapper.style.width = `${width * slides.length}px`;
     wrapper.style.height = `${height}px`;
@@ -109,7 +109,7 @@ function init() {
             如何去判断: 1.要根据用户传进来的方向去进行一个判断
 */
 function drag(ele) {
-    var mouse_position = { x: 0, y: 0 };
+    let mouse_position = { x: 0, y: 0 };
     // var move_x = 0,
     //     move_y = 0;
     //为了后面的计算需要,将move_x 和move_y 放入option中
@@ -118,7 +118,7 @@ function drag(ele) {
         move_y: 0,
     })
     //是否按下了鼠标
-    var is_click = false,
+    let is_click = false,
         //如果next_or_not 为true 表示可以滑动到下一张
         next_or_not = false;
     //添加时间监听
@@ -199,7 +199,7 @@ function move_wrapper(ele, direc, dis) {
 //计算移动距离的函数
 function move_dis(ele) {
     //解构width 和height
-    var { width, direction,height } = this.privateDate;
+    let { width, direction,height } = this.privateDate;
     if (direction == 'horizontal') {//计算在水平方向上应该移动的距离
         //计算index当前的位置
         this.privateDate.index = Math.max(Math.min(this.privateDate.index, this.dom.slides.length - 1), 0)
@@ -241,13 +241,13 @@ function go_or_back(e) {
 
 //动态生成分页器函数
 function make_btn() {
-    var fragment = document.createDocumentFragment();
+    let fragment = document.createDocumentFragment();
     //将该函数中要用到的slides 和 paination 解构
-    var {slides , pagination } = this.dom;
+    let {slides , pagination } = this.dom;
     // console.log('我执行了生成分页器函数');
     //for 循环生成按钮
-    for(var i = 0 ; i < slides.length; i++) {
-        var span = document.createElement('span');
+    for(let i = 0 ; i < slides.length; i++) {
+        let span = document.createElement('span');
         //给span添加之前已经设置好样式的类名
         span.setAttribute ('class' , 'swiper-pagination-bullet');
         span.own_index = i;
@@ -266,7 +266,7 @@ function make_btn() {
 function toggle_btn_bgc() {
     //先清除所有的类名,然后为当前下标元素添加bgc类名
     // NodeList 类型,调用forEach方法
-    var {index} = this.privateDate;
+    let {index} = this.privateDate;
     this.dom.bullets.forEach(function(item){
         item.classList.remove('btn_bgc')
     });
@@ -300,8 +300,8 @@ function click_btn( ) {
     调用移动函数
 */ 
 function autoplay() {
-    var len = this.dom.slides.length;
-    var timer = setInterval(function() {
+    let len = this.dom.slides.length;
+    let timer = setInterval(function() {
         // console.log(this);
         this.privateDate.index = (++ this.privateDate.index) %  len;
             //调用wrapper 移动函数
@@ -317,7 +317,7 @@ function autoplay() {
 //当鼠标进入大盒子的时候需要取消事件监听,移除再次添加事件监听
 //给大盒子绑定鼠标进入和鼠标移除时间
 function container_mouse() {
-    var {root} = this.dom;
+    let {root} = this.dom;
     //鼠标进入 取消定时器
     root.addEventListener('mouseenter',function(e){
         e.stopPropagation();

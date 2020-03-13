@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout</title>
+    <style>
+        .container {
+            width: 300px;
+            height: 200px;
+        }
+        .box1 {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+    <script>
+        var div = document.querySelector('.container');
+        function print() {
+            let fragment = document.createDocumentFragment();
+                var box = document.createElement('div');
+                box.setAttribute('class','box1')
+                fragment.append(box)
+                div.append(fragment)
+        }
+        var timer = setInterval('print()',1000);
+        var timer1 = setTimeout('print()',1000);
+        var timer2 = setTimeout('print()',1000);
+        var timer3 = setTimeout('print()',1000);
+        var timer4 = setTimeout('print()',1000);
+        console.log(`我是第一个定时器${timer1}`);
+        console.log(`我是第二个定时器${timer2}`);
+        console.log(`我是第三个定时器${timer3}`);
+        console.log(`我是第四个定时器${timer4}`);
+        clearInterval(timer1);
+        clearInterval(timer2);
+        clearInterval(timer3);
+        clearInterval(timer4);
+        // // var timer = setTimeout('print()',1000);
+        // var x = setInterval(function(){
+        //     let fragment = document.createDocumentFragment();
+        //         var box = document.createElement('div');
+        //         box.setAttribute('class','box1')
+        //         fragment.append(box)
+        //         div.append(fragment)
+        // },1000);
+       
+    </script>
+</body>
+</html>
