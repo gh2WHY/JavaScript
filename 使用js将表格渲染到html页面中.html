@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        table,tr,td,th{
+            border:1px solid black;
+        }
+        table{
+            width: 500px;
+            margin: 0 auto;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td{
+            padding: 5px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="table">
+        <thead>
+            <caption>学生信息表</caption>
+            <tr>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>分数</td>
+                <td>属性</td>
+            </tr>
+        </thead>
+        <tbody class="tbody">
+
+        </tbody>
+    </table>
+   
+    <script>
+        var Student=[
+            {name:"吴翃宇",age:20,grades:87,property:"小仙女"},
+            {name:"高欢",age:20,grades:39,property:"山神爷"},
+            {name:"付耀宗",age:20,grades:45,property:"小仙女"},
+            {name:"吴沛沛",age:18,grades:86,property:"小仙女"},
+            {name:"李荣荣",age:20,grades:98,property:"山神爷"},
+            {name:"周贵生",age:20,grades:81,property:"山神爷"},
+            {name:"吴博宇",age:16,grades:23,property:"山神爷"},
+            {name:"钱小亚",age:22,grades:78,property:"小仙女"},
+            {name:"蔡进炮",age:21,grades:65,property:"山神爷"},
+            {name:"刘继祖",age:21,grades:70,property:"小仙女"},
+            {name:"李旭平",age:20,grades:90,property:"小仙女"},
+            {name:"胥亚军",age:20,grades:78,property:"山神爷"},
+            {name:"沁儿",age:25,grades:100,property:"小仙女"}
+        ] 
+        // 使用js渲染数据
+        var tbody = document.querySelector('table > tbody')
+        function render(arr) {
+            var fragment = document.createDocumentFragment()//创建一个文档碎片,
+            //用于储存大量的js创建的标签，然后一次性添加进页面
+            arr.forEach(function (item, index, array){
+                var tr = document.createElement('tr')
+                for(var i = 0; i < 4; i++){
+                    //0 1 2 3
+                    var td = document.createElement('td')
+                    if(i === 0){
+                        td.innerText = item.name
+                    }else if(i === 1){
+                        td.innerText = item.age
+                    }else if(i === 2){
+                        td.innerText = item.grades
+                    }else{
+                        td.innerText = item.property
+                    }
+                    tr.append(td)
+                }
+                fragment.append(tr)
+            })
+            tbody.append(fragment)
+        }
+        render(Student)
+    </script>
+</body>
+</html>
