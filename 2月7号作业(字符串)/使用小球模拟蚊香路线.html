@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+        }
+
+        .box {
+            position: absolute;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            top: 0;
+            margin: auto;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        var Obox = document.querySelector('.box')
+        var a = 0,
+            b = 0,
+            c = 1,
+            d = 0.1
+        setInterval (function() {
+            a+=c
+            b+=d
+            Obox.style.transform='translate('+a*Math.sin(b)+'px,'+a*Math.cos(b)+'px)'
+        },16.6666)
+    </script>
+</body>
+
+</html>
