@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面向对象编程</title>
+</head>
+<body>
+    <script>
+
+        /*__proto__的读取器(getter)暴露了一个对象的内部 [[Prototype]] 。
+        对于使用对象字面量创建的对象，这个值是 Object.prototype。
+        对于使用数组字面量创建的对象，这个值是 Array.prototype。对于functions，
+        这个值是Function.prototype。对于使用 new fun 创建的对象，
+        其中fun是由js提供的内建构造器函数之一(Array, Boolean, Date, Number, Object, String 等等），
+        这个值总是fun.prototype。
+        对于用js定义的其他js构造器函数创建的对象，这个值就是该构造器函数的prototype属性。*/
+       
+       
+         /*Console.dir()
+        打印一条以三角形符号开头的语句，可以点击三角展开查看对象的属性。
+        */
+        //原型是一个对象,其他对象可以通过它实现属性继承
+        //大多数情况下，__proto__可以理解为“构造器的原型”，即__proto__===constructor.protype
+        function acd() {}
+        console.dir(acd)
+    </script>
+</body>
+</html>
