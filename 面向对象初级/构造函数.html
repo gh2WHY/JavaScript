@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数</title>
+</head>
+<body>
+    <script>
+        // function Person (name,age,address) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.address = address;
+        //     this.sayName = function () {
+        //         console.log(`我的名字是${this.name}`);
+        //     }
+        //     console.log(this);
+        // }
+        // var lilei = new Person("李雷",18,"安宁西路六号");
+        // var hanmeimei = new Person("李雷",17,"安宁西路六号");
+        // var liming = new Person("李明",17,"安宁西路六号");
+
+        //构造函数实例化对象的过程
+        // function Person (name,age,address) {
+        //     let obj = new Object(); //模拟对象创造的过程,该对象是由Person创造的
+        //     let this = obj;//this本身并不能作为变量名,这里只是为了模拟this指向每一次新生成的对象本身
+        //     this.name = name;
+        //     this.age = age;
+        //     this.address = address;
+        //     this.sayName = function () {
+        //         console.log(`我的名字是${this.name}`);
+        //     }
+        //     return obj;
+        // }
+        function fn() {
+            console.log(`我的名字是${this.name}`);
+        }
+        function Person (name,age,address) {
+            this.name = name;
+            this.age = age;
+            this.address = address;
+            this.sayName = fn;
+            console.log(this);
+        }
+        var lilei = new Person("李雷",18,"安宁西路六号");
+        var hanmeimei = new Person("李雷",17,"安宁西路六号");
+        var liming = new Person("李明",17,"安宁西路六号");
+    </script>
+</body>
+</html>

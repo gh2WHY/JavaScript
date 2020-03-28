@@ -46,9 +46,15 @@
         }
         return obj;
     }
-    var lilei = createPerson("李雷",18,"安宁西路六号");
+    var lilei = new createPerson("李雷",18,"安宁西路六号");
     var hanmeimei = createPerson("李雷",17,"安宁西路六号");
     var liming = createPerson("李明",17,"安宁西路六号");
+
+    function fn () {
+        console.log("我是小仙女");
+    }
+    let obj = new fn();
+    console.log(obj);
     </script>
     
 </body>
