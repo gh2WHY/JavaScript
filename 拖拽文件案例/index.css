@@ -6,6 +6,7 @@
 
 body {
     background-color: #f1f1f1;
+    user-select: none;
 }
 .contianer {
     width: 1000px;
@@ -96,4 +97,8 @@ body {
     height: 204px;
     margin:auto;
     border:1px solid #f1f1f1;
+}
+/* 设置插入图片大小 */
+.render > img {
+    width: 200px;
 }
