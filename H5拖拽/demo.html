@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            float: left;
+            width: 300px;
+            height: 400px;
+            background-color: skyblue;
+            font-size:20px;
+            color:purple;
+            text-align: center;
+            line-height:400px;
+        }
+
+        .box {
+            float: right;
+            width: 150px;
+            height: 150px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" draggable="true"></div>
+    <!-- <img src="https://img9.doubanio.com/view/photo/l/public/p2492913246.webp" width="200"> -->
+    <div class="wrap">把元素移入这里</div>
+    <script>
+        let wrap = document.querySelector('.wrap')
+        let box = document.querySelector(".box");
+        // //被拖拽元素对象事件
+        //  // dragstart 拖拽开始时触发,只触发一次
+        //  box.ondragstart = function () {
+        //     this.style.background = 'blue';
+
+        // }
+
+        // // drag拖拽触发的事件,连续触发,只要鼠标不松开会一直触发
+        // box.ondrag = function () {
+        //     this.style.background = 'yellow';
+        // }
+
+        // // dragend 拖拽结束时,触发的事件,只要鼠标一松开就触发
+        // box.ondragend = function () {
+        //     this.style.background = 'pink';
+        // }
+
+
+        //拖拽元素被拖拽到的对象事件
+        //进入目标元素触发
+        wrap.ondragenter = function () {
+            this.innerHTML = '元素进入了'
+        }
+        //离开目标元素触发
+        wrap.ondragleave = function () {
+            this.innerHTML = '讨厌,谁让你离开的'
+        }
+        //在目标元素中移动触发
+        wrap.ondragover = function () {
+            this.innerHTML = '元素移动了'
+            return false;
+        }
+        //在目标元素上释放鼠标触发
+        wrap.ondrop = function () {
+            this.innerHTML = '鼠标松开了'
+        }
+    </script>
+</body>
+
+</html>
