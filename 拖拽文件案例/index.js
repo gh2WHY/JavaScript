@@ -6,8 +6,10 @@ let reBox = document.querySelector('.render');
 let number = document.querySelector('.number');
 //获取图片总的大小
 let total = document.querySelector('.size');
-let num = new Array();
-console.log(num)
+//获取选择图片的input标签
+let file = document.querySelector('#choice')
+let pictures = new Array();
+console.log(pictures)
 //给rigBox添加事件
 rigBox.ondragover = function (ev) {
     //阻止事件冒泡
@@ -18,6 +20,7 @@ rigBox.ondragover = function (ev) {
 }
 
 //给rigBox添加ondrop事件
+//通过拖拽来添加图片
 rigBox.ondrop = function (ev) {
     //阻止事件冒泡
     ev.stopPropagation();
@@ -26,13 +29,19 @@ rigBox.ondrop = function (ev) {
     //获取文件信息
     let file = ev.dataTransfer.files[0];
     addpic(file);
-    num.push(file)
-    let size = 0;
-    num.forEach(function(item) {
-        size += item.size
-    })
-    number.innerHTML = num.length;
-    total.innerHTML = (size / 1024 /1024).toFixed(2);
+    count(file);
+}
+
+//input标签添加图片方法
+file.onchange = function () {
+    let file = this.files;
+    let length = file.length;
+    if(length){
+        for(let i = 0; i < length; i++){
+            addpic(file[i]);
+            count(file);
+        }   
+    }   
 }
 
 //封装加入图片函数
@@ -52,3 +61,20 @@ function addpic(file) {
         reBox.appendChild(img);
     }
 }
+
+//封装计算插入多少张图片,共多少m函数
+function count(file) {
+    pictures.push(file)
+    let size = 0;
+    pictures.forEach(function(item) {
+        if(item.size) {
+            size += item.size
+        }else {
+            size +=item[0].size;
+        } 
+    })
+    number.innerHTML = pictures.length;
+    total.innerHTML = (size / 1024 /1024).toFixed(2);
+}
+
+
