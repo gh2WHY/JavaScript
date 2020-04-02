@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="500" height="400">
+        您的浏览器不支持canvas，请升级您的浏览器或更换谷歌浏览器
+    </canvas>
+    <script>
+        //使用DOM方法获取canvas元素
+        let Canvas = document.querySelector('canvas');
+        //使用画布的上下文,获取绘画功能对象,就像拿到一直画笔,这支画笔只在当前画笔有效
+        let ctx = Canvas.getContext("2d");
+
+        // ctx.rect(100,100,200,50);
+        // ctx.stroke();
+        // ctx.clearRect(250, 250, 30, 30);
+        // ctx.stroke();
+
+        // //有填充
+        // ctx.beginPath()
+        // ctx.arc(200,200,50,0, Math.PI*2, true)
+        // ctx.fill()
+        // ctx.stroke();
+        // //无填充
+        // ctx.beginPath()
+        // ctx.arc(80,80,50,0, Math.PI*2, true)
+        // ctx.stroke();
+
+        // ctx.fillRect(100,100,300,200)
+        // ctx.clearRect(150,150,80,30);
+        // ctx.strokeRect(10,10,100,40);
+        // ctx.strokeStyle = "purple";
+        // ctx.lineWidth = 4;
+        // ctx.moveTo(50,50); //将画笔移动至画布上画线段的初始位置
+        // ctx.lineTo(50,200); //告诉下一个点的位置在哪 
+        // ctx.lineTo(80,100);
+        // ctx.lineTo(180,90);
+        // ctx.closePath();
+        // ctx.stroke(); //开始画线
+
+
+        ctx.beginPath();	  
+        ctx.moveTo(100, 100); 
+        ctx.lineTo(300, 300); 
+        ctx.lineTo(300, 200);
+        ctx.lineTo(430, 180);
+        ctx.closePath();        // 闭合路径
+        ctx.stroke();	        // 正式开始划线 
+        ctx.fill();				// 绘制填充色
+    </script>
+</body>
+
+</html>
