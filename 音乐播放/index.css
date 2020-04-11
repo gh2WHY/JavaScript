@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.music {
+  position: relative;
+  width: 300px;
+  height: 575px;
+  margin: auto;
+  background-color: #C5CAE9;
+}
+.music h3 {
+  padding-top: 20px;
+  font-size: 26px;
+  font-weight: bolder;
+  line-height: 20px;
+  text-align: center;
+  color: #4CAF50;
+}
+.music .img-wrap {
+  width: 100%;
+  height: 120px;
+  margin-top: 20px;
+}
+.music .img {
+  overflow: hidden ;
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  border-radius: 50%;
+}
+.music .song-wrap {
+  overflow: hidden;
+  height: 300px;
+  margin-top: 20px;
+}
+.music .song-wrap .song {
+  position: relative;
+  margin-top: 50px;
+  height: 1050px;
+}
+.music .song-wrap .song p {
+  font-size: 14px;
+  line-height: 25px;
+  text-align: center;
+}
+.active {
+  color: #9C27B0;
+}
+.music:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  top: 200px;
+  left: 0;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0) 70%, rgba(255, 255, 255, 0.6) 100%);
+}
+/*# sourceMappingURL=index.css.map */
