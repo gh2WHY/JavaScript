@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
 </head>
 <body>
     <div class="music">
         <h3>音乐播放器</h3>
         <div class="img-wrap">
             <div class="img">
-                <img src="./medius/jay.jpg" alt="jay" width="120" height="120">
+                <img src="./media/jay.jpg" alt="jay" width="120" height="120">
             </div>
         </div>
         <div class="song-wrap">
@@ -55,10 +56,31 @@
                 <p data-time="03:20">在说我愿意</p>
             </div>
         </div>
-
-            <audio src="./medius/11.mp3" class="audio" controls></audio>
-<!--        <audio class="audio" src="./media/11.mp3" ></audio>-->
+        <div class="controls">
+            <audio src="./media/11.mp3" class="audio" ></audio>
+            <div class="process"></div>
+            <div class="option">
+                <div class="content">
+                    <div class="loop">
+                        <span class="iconfont icon-yuanxunhuanbofang"></span>
+                    </div>
+                    <div class="prev">
+                        <span class="iconfont icon-ai10"></span>
+                    </div>
+                    <div class="play">
+                        <span class="iconfont icon-arrow-"></span>
+                    </div>
+                    <div class="next">
+                        <span class="iconfont icon-ai09"></span>
+                    </div>
+                    <div class="menu">
+                        <span class="iconfont icon-caidan"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
 <script src = './index.js'></script>
 </body>
 </html>

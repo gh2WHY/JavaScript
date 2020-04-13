@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 .music {
   position: relative;
@@ -43,6 +44,62 @@
   font-size: 14px;
   line-height: 25px;
   text-align: center;
+}
+.music .controls {
+  width: 100%;
+  height: 75px;
+}
+.music .controls .process {
+  width: 100%;
+  height: 25px;
+}
+.music .controls .option {
+  width: 100%;
+  height: 52px;
+  background-color: #26A69A;
+}
+.music .controls .option .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  height: 50px;
+  margin: auto;
+}
+.music .controls .option .content .loop,
+.music .controls .option .content .next,
+.music .controls .option .content .prev,
+.music .controls .option .content .menu {
+  width: 30px;
+  height: 30px;
+}
+.music .controls .option .content .loop span,
+.music .controls .option .content .next span,
+.music .controls .option .content .prev span,
+.music .controls .option .content .menu span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 28px;
+  line-height: 30px;
+  text-align: center;
+  color: #FF8A65;
+}
+.music .controls .option .content .play {
+  width: 40px;
+  height: 40px;
+}
+.music .controls .option .content .play span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 32px;
+  text-align: center;
+  line-height: 40px;
+  color: #FF8A65;
+}
+.music .controls .option .content .play .icon-zanting {
+  font-size: 40px;
 }
 .active {
   color: #9C27B0;

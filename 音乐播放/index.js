@@ -2,6 +2,25 @@
 let audio = document.querySelector('.audio');
 let songWrap = document.querySelector('.song-wrap')
 
+//获取控件
+let play = document.querySelector('.play');
+// console.log(play);
+let icon = play.querySelector('.iconfont')
+console.log(icon)
+//按钮播放暂停
+let click = true;
+play.onclick = function() {
+    if (click) {
+        audio.play();
+    }else {
+        audio.pause();
+    }
+    click = !click;
+
+    icon.classList.toggle('icon-zanting');
+    icon.classList.toggle('icon-arrow-');
+
+}
 //绑定音频播放时间
 audio.ontimeupdate = function(){
     let currentTime = init(this.currentTime) ;
