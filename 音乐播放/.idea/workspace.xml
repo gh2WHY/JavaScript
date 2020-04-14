@@ -42,6 +42,7 @@
       <workItem from="1586585051072" duration="1002000" />
       <workItem from="1586586409263" duration="9374000" />
       <workItem from="1586742841505" duration="4247000" />
+      <workItem from="1586850014008" duration="17081000" />
     </task>
     <servers />
   </component>
@@ -53,6 +54,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="87" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1586586937381" />
+    <state x="233" y="0" key="#配置路径变量" timestamp="1586867503353">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="0" key="#配置路径变量/0.0.1280.680@0.0.1280.680" timestamp="1586867503353" />
     <state x="250" y="117" key="EditFileWatcherDialog" timestamp="1586587020613">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -65,5 +70,9 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1586587021250" />
+    <state x="297" y="151" key="run.anything.popup" timestamp="1586860771874">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1586860771874" />
   </component>
 </project>
