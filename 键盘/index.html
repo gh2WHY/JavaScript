@@ -109,20 +109,21 @@
         let body = document.querySelector("body");
 
 
-        body.addEventListener("contextmenu", function (ev) {
-            ev.preventDefault();
-            if (ev.target.tagName === "BUTTON") {
-                let src = window.prompt("请输入一个网址");
-                ev.target.dataset.src = src;
-                let a = document.createElement('a');
-                ev.target.appendChild(a);
-                a.setAttribute('href',src);
-                a.target = '_blank'
-            }
-        })
+        // body.addEventListener("contextmenu", function (ev) {
+        //     ev.preventDefault();
+        //     if (ev.target.tagName === "BUTTON") {
+        //         let src = window.prompt("请输入一个网址");
+        //         ev.target.dataset.src = src;
+        //         let a = document.createElement('a');
+        //         ev.target.appendChild(a);
+        //         a.setAttribute('href',src);
+        //         a.target = '_blank'
+        //     }
+        // })
 
         body.addEventListener("keypress", function (ev) {
             ev.preventDefault();
+            console.log(ev)
             if (ev.target.tagName === "BUTTON") {
                 console.log(1)
                 let src1 = window.prompt("请输入一个网址");
@@ -135,7 +136,7 @@
             // console.log(ev.target.dataset.src)
         })
 
-
+        
 
 
 
