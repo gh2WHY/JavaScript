@@ -1,0 +1,18 @@
+h2 {
+    margin-top:50px;
+    text-align: center;
+    color:pink;
+}
+.introduce {
+    width: 500px;
+    margin:auto;
+    font-size:18px;
+    line-height:22px;
+}
+.img {
+    width: 500px;
+    margin:auto;
+}
+.img > img{
+    width: 500px;
+}
