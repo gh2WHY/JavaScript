@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+            background-color: rgba(255, 255, 255, 0.473);
+        }
+
+        h1 {
+            margin: 100px 0;
+            text-align: center;
+        }
+
+        .keybord {
+            width: 900px;
+            height: 800px;
+            margin: 50px auto;
+
+        }
+
+        button {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            margin: 10px auto;
+        }
+
+        a {
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100%;
+            height: 100%;
+            /* background-color:red; */
+        }
+
+        .keybord div {
+            display: flex;
+            justify-content: center;
+        }
+
+        .keybord>div:nth-child(1)>button+button {
+            margin-left: 4px;
+        }
+
+        .keybord>div:nth-child(2)>button+button {
+            margin-left: 13px;
+        }
+
+        button {
+            font-size: 24px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>键盘导航 一键即达</h1>
+    <div class="keybord">
+        <div class="d">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>0</button>
+        </div>
+        <div class="f">
+            <button>Q</button>
+            <button>W</button>
+            <button>E</button>
+            <button>R</button>
+            <button>T</button>
+            <button>Y</button>
+            <button class="aU">U</button>
+            <button>I</button>
+            <button>O</button>
+            <button>P</button>
+        </div>
+        <div class="s">
+            <button>A</button>
+            <button>S</button>
+            <button>D</button>
+            <button>F</button>
+            <button>G</button>
+            <button>H</button>
+            <button>J</button>
+            <button>K</button>
+            <button>L</button>
+        </div>
+        <div class="t">
+            <button>Z</button>
+            <button>X</button>
+            <button>C</button>
+            <button>V</button>
+            <button>B</button>
+            <button>N</button>
+            <button>M</button>
+        </div>
+    </div>
+
+    <script>
+        let aBtn = document.querySelectorAll("button");
+        let body = document.querySelector("body");
+        let au = document.querySelector(".aU");
+        let count = 0;
+        let length = aBtn.length;
+        console.log(length)
+
+
+        body.addEventListener("contextmenu", function (ev) {
+            ev.preventDefault();
+            // console.log(ev)
+            if (ev.target.tagName === "BUTTON") {
+                let src = window.prompt("请输入一个网址");
+                ev.target.dataset.src = src;
+                ren(ev.target)
+            }
+        })
+        body.addEventListener("keypress", function (ev) {
+            let str = ev.code;
+            //打印的结果为keyU或者digit1这样的字符串
+            //通过字符串的截取方法只截取最后一位
+            let word = ''
+            if (str.length > 4) {
+                word = str.substring(5)
+            } else {
+                word = str.substr(3)
+            }
+            //判断当前的键是不是数字键或字母键
+            if ((0 < parseInt(word) < 9) || ('A' < word < 'Z')) {
+                let src1 = window.prompt("请输入一个网址");
+                //循环按钮数组
+                for (let i = 0; i < length; i++) {
+                    // console.log(aBtn[i].innerHTML)
+                    //将当前button中的内容与按扭对比,找到相同的一个
+                    if (aBtn[i].innerHTML == word) {
+                        aBtn[i].dataset.src = src1;
+                        ren(aBtn[i]);
+                    }
+                }   
+            }
+            // if (ev.code === "BUTTON") {
+            //     let src1 = window.prompt("请输入一个网址");
+            //     ev.target.dataset.src = src1;
+            //     ren(ev);
+            // }
+        })
+
+        function ren(ele) {
+            let data = ele.dataset;
+            let e = document.createElement("a");
+            e.setAttribute("href", data.src);
+            e.setAttribute("target", "_blank");
+            e.style.display = "block";
+            ele.appendChild(e);
+        }
+
+    </script>
+</body>
+
+</html>
