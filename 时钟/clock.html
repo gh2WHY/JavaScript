@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .clock {
+            position: relative;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            margin: auto;
+            width: 600px;
+            height: 600px;
+            border: 1px solid white;
+            border-radius: 50%;
+        }
+
+        .aim {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            margin: auto;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: red;
+        }
+
+        .second {
+            height: 250px;
+            top: 13%;
+            background-color: #fff;
+            transform-origin: 50% 88.8%;
+        }
+
+        .mintue {
+            height: 200px;
+            top: 20%;
+            background-color: #58a;
+            transform-origin: 50% 90%;
+        }
+
+        .hour {
+            height: 150px;
+            top: 28%;
+            background-color: orange;
+            transform-origin: 50% 88%;
+        }
+
+        .box {
+            position: absolute;
+            right: 0;
+            left: 0;
+            width: 3px;
+            margin: 0 auto;
+        }
+
+        i {
+            position: absolute;
+            top: 0px;
+            left: 50%;
+            width: 2px;
+            height: 15px;
+            background-color: #9c88ff;
+            transform-origin: 1px 300px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="clock">
+        <div class="aim"></div>
+        <div class="second box"></div>
+        <div class="mintue box"></div>
+        <div class="hour box"></div>
+    </div>
+
+    <script>
+        var clock = document.querySelector('.clock'),
+            fragment = document.createDocumentFragment()
+        //生成60个i标签，并插入clock里边
+        for (var i = 0; i < 60; i++) {//一共创建了60个i标签
+            var oI = document.createElement('i')
+            if ((i * 6 % 30) === 0) {
+                oI.style.cssText = `width:4px;height:25px;background-color:#9c88ff;transform:rotate(${i * 6}deg)`
+            } else {
+                oI.style.cssText = `transform:rotate(${i * 6}deg)`
+            }
+            fragment.append(oI)
+        }
+        clock.append(fragment)
+
+        var second = document.querySelector('.second'),
+            minute = document.querySelector('.mintue'),
+            hour = document.querySelector('.hour')
+        setInterval(nowTime, 1000)
+        var second_deg = 0
+        // console.log(second)
+        function nowTime() {
+            var date = new Date()
+            var Second = date.getSeconds(),
+                Minute = date.getMinutes(),
+                Hour = date.getHours()
+            second_deg += 6;
+            second.style.cssText = `transform:rotate(${second_deg}deg);`
+            minute.style.cssText = `transform:rotate(${(Minute + Second/ 60) * 6}deg);`
+            hour.style.cssText = `transform:rotate(${(Hour + Minute / 60) * 30}deg);`
+
+        }
+    </script>  
+</body>
+
+</html>

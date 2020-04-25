@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        * {
+            margin:0;
+            padding:0;
+            list-style:none;
+        }
+
+        .container {
+            position: relative;
+            left:0;
+            right:0;
+            top:60px;
+            bottom:0;
+            margin:auto;
+            width: 300px;
+            height: 300px;
+            background-color: #000;
+            /* border:1px solid red; */
+        }
+
+        .title {
+            position: absolute;
+            top:10px;
+            right:0;
+            bottom:0;
+            left:0;
+            width: 300px;
+            height: 60px;
+            /* border:1px solid green; */
+            line-height: 60px;
+            font-size:30px;
+            color: #e74c3c;
+        }
+
+        .time {
+            position: absolute;
+            top:75px;
+            right:0;
+            bottom:0;
+            left:0;
+            width: 300px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            /* border:1px solid green; */
+        }
+
+        .time > span {
+            font-size: 28px;
+            color:#2ecc71;
+        }
+        .con {
+            position: absolute;
+            left:0;
+            right:0;
+            bottom:0;
+            margin:auto;
+            width: 170px;
+            height: 60px;
+            /* border:1px solid blue; */
+            line-height: 60px;
+            font-size:24px;
+            color:#e67e22;
+        }
+
+        .top {
+            top: 40px;
+        }
+
+        .bottom {
+            top: 175px;
+        }
+
+        .left {
+            left:10px;
+        }
+
+        .right {
+            right:10px;
+        }
+        .ex {
+            position: absolute;
+            top: 165px;
+            width: 50px;
+            height: 100px;
+            /* border:1px solid pink; */
+            /* line-height: 100px; */
+            font-size:34px;
+            color:#8e44ad;
+
+        }
+
+        .ta {
+            text-align:center;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title ta">
+            <span>距离姐妹回来还有:</span>
+        </div>
+        <div class="time">
+            <span class="day"></span>
+            <span>天</span>
+            <span class="hour"></span>
+            <span>小时</span>
+            <span class="minute"></span>
+            <span>分</span>
+            <span class="second"></span>
+            <span>秒</span>
+        </div>
+
+        <div class="top con ta" >
+            <span>跑城姐妹花</span>
+        </div>
+
+        <div class="bottom con ta">
+            <span>永远不分家</span>
+        </div>
+
+        <div class="left ex ta">
+            <span>
+                姐妹
+            </span>
+        </div>
+
+        <div class="right ex ta">
+            <span>
+                情深
+            </span>
+        </div>
+    </div>
+
+    <script>
+        
+        var oday = document.querySelector('.day'),
+            ohour = document.querySelector('.hour'),
+            ominute = document.querySelector('.minute'),
+            osecond = document.querySelector('.second')
+        var endTime = new Date('2020-3-1 14:00')
+        setInterval(abc,1000)
+        abc()
+        function abc() {
+            var date = new Date(),
+                dis_time = endTime - date
+            // console.log(dis_time)
+            var dates = Math.floor( dis_time / (24 * 60 * 60 * 1000)) //将得到的毫米数转化为天数
+            var hours = Math.floor( (dis_time / ( 60 * 60 * 1000)) % 24) //计算小时
+            var minutes = Math.floor( (dis_time / ( 60 * 1000)) % 60) //计算分钟
+            var seconds = Math.floor( (dis_time /  1000) % 60) //计算秒
+            console.log(minutes,seconds)
+            oday.innerHTML = dates
+            ohour.innerHTML = hours
+            ominute.innerHTML = minutes
+            osecond.innerHTML = seconds
+        }
+    </script>
+</body>
+</html>

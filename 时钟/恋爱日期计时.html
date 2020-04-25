@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin:0;
+        padding:0;
+        list-style: 0;
+    }
+
+    div {
+        position: absolute;
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        margin:auto;
+        width: 340px;
+        height: 200px;
+        line-height:100px;
+        text-align:center;
+        background-color: #000;
+    }
+
+    span {
+        font-size: 28px;
+        color:palegreen
+    }
+</style>
+<body>
+
+    <div>
+        <span>距离我们认识已经过了</span>
+        <span class="day"></span>
+        <span>天</span>
+        <span class="hour"></span>
+        <span>小时</span>
+        <span class="minute"></span>
+        <span>分</span>
+        <span class="second"></span>
+        <span>秒</span>
+    </div>
+    <script>
+
+        var oday = document.querySelector('.day'),
+            ohour = document.querySelector('.hour'),
+            ominute = document.querySelector('.minute'),
+            osecond = document.querySelector('.second')
+        
+        var start_time = new Date('2014-8-17 14:00')
+        setInterval(abc, 1000)
+        abc()
+        function abc() {
+            var date = new Date(),
+                dis_time = date - start_time 
+            // console.log(dis_time)
+            var dates = Math.floor(dis_time / (24 * 60 * 60 * 1000)) //将得到的毫米数转化为天数
+            var hours = Math.floor((dis_time / (60 * 60 * 1000)) % 24) //计算小时
+            var minutes = Math.floor((dis_time / (60 * 1000)) % 60) //计算分钟
+            var seconds = Math.floor((dis_time / 1000) % 60) //计算秒
+            console.log(minutes, seconds)
+            oday.innerHTML = dates
+            ohour.innerHTML = hours
+            ominute.innerHTML = minutes
+            osecond.innerHTML = seconds
+            oday.innerHTML = dates
+            ohour.innerHTML = hours
+            ominute.innerHTML = minutes
+            osecond.innerHTML = seconds
+        }
+    </script>
+</body>
+
+</html>
