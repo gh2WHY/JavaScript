@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.js"></script>
+    <style>
+        p {
+            display: block;
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            text-align: center;
+            line-height: 30px;
+            margin-bottom: 5px;
+            border:1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div class="box1">
+    <p data = 'first'>this is box 1</p>
+    <p>this is box 2</p>
+    <p>this is box 3</p>
+</div>
+<div class="box2">
+    <p>this is box 4</p>
+    <p>this is box 5</p>
+    <p>this is box 6</p>
+</div>
+
+<script>
+    // $('p').get(0).style.backgroundColor = 'pink';
+    // $('p').eq(1).css('background-color','#999');
+    //1. 获取属性值
+    // console.log( $('p:first').css('background-color'));
+    // console.log( $('p:first').css('width'))
+
+    //2.1 设置一个属性值
+    // $("p:last").css('background-color','#81C784');
+    // $("p:last").css('width','300');
+
+    //2.2 设置多个属性值
+    // $('p:odd').css({
+    //     'width':300,
+    //     'height':50,
+    //     'background-color':'#8BC34A',
+    //     'color':'#E0E0E0',
+    // });
+
+    //2.3 设置的属性可以在原来的基础上设置
+    // $('p:eq(0)').css('width','+=100px');
+    // $('p:eq(2)').css('width','+=100');
+
+    //3. 获取自定义属性
+    // console.log($('p:first').attr('data')); //first
+    // $('p:first').attr('data','123');
+    //修改自定义属性data的值从first变为123
+
+    //4. 关于类名
+    //4.1 添加类名 addclass()
+    // $('p:last').addClass('last')
+    //4.2 删除类名 removeClass()
+    // $('p:last').removeClass('last')
+    //4.3 替换类名toogleClass()
+    // $('p:last').toggleClass('last')
+
+    //5. 节点值
+    //5.1 html()
+    $('p:first').html();  // 获取值
+    $('p:first').html('<h2>this is h1</h2>'); // 设置值
+
+    //5.2 text()
+    // $('p:first').text();  // 获取值
+    // $('p:first').text('<h2>this is h2</h2>'); // 设置值
+
+    //find()
+    console.log($('.box1').find('p'))
+
+    console.log($('.box1 p').parent())
+</script>
+</body>
+</html>
+</body>
+</html>
