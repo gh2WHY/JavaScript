@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            border:2px solid red;
+        }
+        /*解决方案一:父元素添加伪类,设置clear属性*/
+        /*before没有效果*/
+        .box:after{
+            content:"";
+            display: block;
+            background-color: red;
+            height:0;
+            overflow: hidden;
+            clear: both;
+        }
+        .box1{
+            float: left;
+            width: 80px;
+            height: 80px;
+            background-color: seagreen;
+        }
+        .box2{
+            float: right;
+            width: 150px;
+            height: 150px;
+            background-color: cornflowerblue;
+        }
+        /*解决方案二:添加一个空的块元素,设置clear:both,缺陷:会破坏页面的文档结构*/
+        /*.clear {*/
+        /*    clear:both;*/
+        /*}*/
+
+       /*父元素高度塌陷之后会使标准流中的元素会上移,使得页面布局混乱*/
+        .wei {
+            width: 100px;
+            height: 100px;
+            /*margin-top: 50px;*/
+            background-color: darkseagreen;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box1"></div>
+        <div class="box2"></div>
+<!--        <div class="clear"></div>-->
+    </div>
+
+    <div class="wei"></div>
+</body>
+</html>
