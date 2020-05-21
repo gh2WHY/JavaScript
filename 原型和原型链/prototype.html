@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // // 构造函数
+        // // 构造函数里面没有任何语句，也就是说，这个构造函数在执行的时候，不会给创建出来的对象添加任何属性
+        // function Person() {
+        //
+        // }
+        // //构造函数的原型，我们更改了构造函数的原型，为一个新的对象：
+        // Person.prototype = {
+        //     name:'why',
+        //     age : 18,
+        //     sex : '女',
+        //     major :'计算机科学与技术',
+        // }
+        //
+        // //当一个对象被new出来的时候，不仅仅执行了构造函数里面的语句，也会把这个函数的__proto__指向构造函数的prototype。
+        // let why = new Person();
+        // //当我们试图访问sex、age属性的时候，身上没有。那么就去查找原型，原型身上有，就当做了自己的属性返回了。
+        // console.log(why.name); //高欢
+        // console.log(why.age);  //18
+        // console.log(why.sex);  //男
+        // console.log(why.major); //'计算机科学与技术'
+        //
+        //
+        // console.log(why.__proto__);
+        // console.log(why.__proto__ === Person.prototype)
+
+
+        // let why = new Person('高欢',18,'男');
+
+        // let haha = new Person('哈哈',18,'女');
+        // console.log(Person.prototype.constructor);
+
+        //
+
+        // function People(){
+        //
+        // }
+        // //People的实例化对象
+        // var xiaoming = new People();
+        // //xiaoming的原型对象
+        // console.log(xiaoming.__proto__);
+        // // 原型对象的原型对象
+        // console.log(xiaoming.__proto__.__proto__);
+        // // 原型对象的原型对象的构造函数是谁
+        // console.log(xiaoming.__proto__.__proto__.constructor); //Object
+        //
+        // // 那我们看看还能不不能再向上查原型对象
+        // console.log(xiaoming.__proto__.__proto__.__proto__);
+        // // 结果为null
+
+
+        // Object.prototype.sayName= function() {
+        //         alert(`我叫${this.name},今年${this.age}岁了`);
+        // }
+        // why.sayName();
+        function Person(name,age,sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+
+       
+        let why = new Person('高欢',18,'男');
+        console.log(Person.prototype);
+    </script>
+</body>
+</html>
