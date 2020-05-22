@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function  Person(name,age,sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+
+        function Student(name,age,sex,stuno) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.stuno = stuno;
+        }
+
+        let pp =new Person('彭昱畅',18,'男');
+        let why = new Student('哈哈',13,'女',10001)
+        console.log(pp)
+        console.log(why);
+
+        function  Person(name,age,sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+
+        function Student(name,age,sex,stuno) {
+            Person.call(this,name,age,sex);
+            this.stuno = stuno;
+        }
+
+        let pp =new Person('彭昱畅',18,'男');
+        let why = new Student('哈哈',13,'女',10001)
+        console.log(pp)
+        console.log(why);
+    </script>
+</body>
+</html>

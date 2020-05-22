@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function Person(name) {
+            this.name = name;
+        }
+        let pp = new Person('彭昱畅')
+        Person.prototype.sayName = function () {
+            console.log(`我的名字是${this.name}`);
+        }
+
+        function Student(name,stuno) {
+            this.name = name;
+            this.stuno = stuno;
+        }
+
+        ////核心语句，继承的实现全靠这条语句了：
+        Student.prototype = new Person();
+        Student.prototype.sayStuno = function () {
+            console.log(`我的学号是${this.stuno}`);
+        }
+
+        let why = new Student('哈哈',10001);
+        console.log(pp);
+        console.log(why);
+
+    </script>
+</body>
+</html>

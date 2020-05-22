@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function  Person(name,age) {
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.sayName = function () {
+            console.log(`我的名字叫${this.name}`);
+        }
+
+        function Student(name,age,stuno) {
+            Person.call(this,name,age);
+            this.stuno = stuno;
+        }
+
+        //圣杯模式核心代码
+        function inhert(parent,child) {
+            function fn() {};
+            fn.prototype = parent.prototype;
+            child.prototype = new fn();
+            child.prototype.constructor = Student;
+            child.prototype.parent = Person;
+        }
+
+        inhert(Person,Student);
+
+        Student.prototype.sayStuno = function () {
+            console.log(`我的学号是${this.stuno}`);
+        }
+
+        let why = new Student('哈哈',14,10001);
+        let pp = new Person('彭昱畅',18);
+    </script>
+</body>
+</html>

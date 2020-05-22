@@ -56,19 +56,28 @@
         // // 结果为null
 
 
-        // Object.prototype.sayName= function() {
-        //         alert(`我叫${this.name},今年${this.age}岁了`);
-        // }
-        // why.sayName();
+        Object.prototype.sayName= function() {
+                alert(`我叫${this.name},今年${this.age}岁了`);
+        }
+        why.sayName();
         function Person(name,age,sex) {
             this.name = name;
             this.age = age;
             this.sex = sex;
         }
 
-       
+
         let why = new Person('高欢',18,'男');
         console.log(Person.prototype);
+
+
+        for(var i = 0; i< 5; i++){
+            setTimeout(function(){
+                console.log(i)
+            },100)
+        }
+
+
     </script>
 </body>
 </html>
