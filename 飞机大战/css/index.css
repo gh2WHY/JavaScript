@@ -41,7 +41,7 @@ body{
 /* 游戏地图 */
 .game-map{
     /* display: none; */
-    background-image: url(../images/bg.jpg);
+    background-image: url(../images/bg_1.jpg);
 }
 .game-map .score{
     display: none;
