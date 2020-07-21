@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div id="content">xiaotian123098</div> -->
+    <input type="text" name="username" id="username">
+    <script>
+        document
+            .querySelector(`[name="username"]`)
+            .addEventListener("keyup", function () {
+                let res = this.value.match(/^[a-z]{3,6}$/i);
+                console.log(res);
+                console.log(res ? "正确" : "失败");
+            });
+        // let con = prompt('请输入要查询的内容,支持正则');
+        // let reg = new RegExp(content, 'g');
+        // let search = document.querySelector('#content');
+        // console.log(reg);
+        // console.log(search.innerHTML);
+        // let res = search.innerHTML.replace(reg,str => {
+        //     return `<span style="color:red">${str}</span>`;
+        // })
+        // // let body = document
+        // //     .querySelector("#content")
+        // //     .innerHTML.replace(reg, str => {
+        // //         return `<span style="color:red">${str}</span>`;
+        // //     });
+        // document.body.innerHTML = res;
+
+        //选择符的使用
+        //匹配字符是否包括py或者st
+        // let str = 'happy';
+        // console.log(/py|st/.test(str));    //true
+
+        // //内容必须以www开始
+        // let reg = new RegExp(/^www/);
+        // console.log(reg.test('www.baidu.com'));        //true
+        // console.log(reg.test('http://www.baidu.com')); //false
+
+        // let str = 'www.baidu.com';
+        // console.log(/^www/.test(str));
+
+        // 内容必须以.com结束
+        // let reg = new RegExp(/.com$/); 
+        // console.log(reg.test('www.baidu.com')); //true
+        // console.log(reg.test('abc.cn'));        //false
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // //匹配所有数字
+        // let str = 'happy123';
+        // console.log(str.match(/\d/g)); // ["1", "2", "3"]
+
+        // //匹配所有字符串
+        // let str = `李雷:010-12345678,韩梅梅:020-98765432` ;
+        // console.log(str.match(/\d{3}-\d{7,8}/g));   //["010-12345678", "020-98765432"]
+
+        // // 匹配字母数字下划线
+        // let str = '123@qq.com_$'
+        // console.log(str.match(/\w/g));       //["1", "2", "3", "q", "q", "c", "o", "m", "_"]
+        //如果使用.匹配则需要转义
+        // let str = `12$^%rtegd_+-`;
+        // console.log(str.match(/\./g));
+
+        // 匹配除了空白符外任意一个字符匹配
+
+        // let hd = "hdcms@";
+        // console.log(hd.match(/\S/g)); //["2", "0", "1", "0","@"]
+
+        // 如果要匹配点则需要转义
+
+        // let str = `baidu@com`;
+        // console.log(/baidu.com/i.test(str)); //true
+        // console.log(/baidu\.com/i.test(str)); //false
+
+        // //         使用.匹配除换行符外任意字符，下面匹配不到hdcms.com 因为有换行符
+
+        //         const url = `
+        //             https://www.baidu.com
+        //             hdcms.com
+        //         `;
+        //         console.log(url.match(/.+/));
+
+        //         使用 / s视为单行模式（忽略换行）时，.可以匹配所有
+
+        let hd = `
+            <span>
+             houdunren
+             hdcms
+            </span>
+        `;
+        let res = hd.match(/<span>.*<\/span>/s);
+        console.log(res[0]);
+
+//         正则中空格会按普通字符对待
+
+//         let tel = `010 - 999999`;
+//         console.log(/\d+-\d+/.test(tel)); //false
+//         console.log(/\d+ - \d+/.test(tel)); //true
+
+        // #所有字符
+        // 可以使用 [\s\S] 或 [\d\D] 来匹配所有字符
+
+//         let hd = `
+//   <span>
+//     houdunren
+//     hdcms
+//   </span>
+// `;
+//         let res = hd.match(/<span>[\s\S]+<\/span>/);
+//         console.log(res[0]);
+    </script>
+</body>
+
+</html>

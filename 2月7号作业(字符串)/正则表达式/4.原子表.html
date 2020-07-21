@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="username" />
+    <script>
+        let input = document.querySelector(`[name="username"]`);
+        input.addEventListener("keyup", e => {
+            const value = e.target.value;
+            let state = /^[a-z][\w]{2,7}$/i.test(value);
+            console.log(
+                state ? "正确！" : "用户名只能为3~8位的字母或数字，并以字母开始"
+            );
+        });
+        // // 使用[]匹配其中任意字符即成功，下例中匹配ex任何一个字符，而不会当成一个整体来对待
+        // const url = 'happy evey day';
+        // console.log(/ex/.test(url)); //false
+        // console.log(/[ev]/.test(url)); //true
+
+        // 日期的匹配
+        // let tel = "2022-02-23";
+        // let date = '2020/07/29';
+        // let reg = new RegExp(/\d{4}([-\/])\d{2}\1\d{2}/g)
+        // console.log(tel.match(reg));  //["2022-02-23"]
+        // console.log(date.match(reg)); //["2020/07/29"]
+
+        // let str = "hdddd";
+        // console.log(str.match(/(hd)+/ig)); //hd
+
+        let hd = "happy";
+        let res = hd.match(/a/g);
+        console.log(res);
+        console.log(res[0]); //匹配的结果
+        console.log(res.index); //出现的位置
+
+        // ["a", index: 1, input: "happy", groups: undefined]
+        //  a
+        //  1
+    </script>
+</body>
+
+
+
+</html>
