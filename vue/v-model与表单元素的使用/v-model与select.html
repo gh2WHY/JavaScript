@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 只能选择单个 -->
+    <!-- <select name="fruit" v-model = "select" >
+      <option  value="苹果">苹果</option>
+      <option  value="香蕉">香蕉</option>
+      <option  value="梨">梨</option>
+      <option  value="菠萝">菠萝</option>
+    </select>
+
+    <h2>你的选择是{{select}}</h2> -->
+
+
+      <!-- 可以选择多个 -->
+      <!-- <select name="fruit" v-model = "fruits"  multiple>
+        <option  value="苹果">苹果</option>
+        <option   value="香蕉">香蕉</option>
+        <option   value="梨">梨</option>
+        <option   value="菠萝">菠萝</option>
+      </select> -->
+      <select name="abc" v-model="fruits" multiple>
+        <option value="苹果">苹果</option>
+        <option value="香蕉">香蕉</option>
+        <option value="榴莲">榴莲</option>
+        <option value="葡萄">葡萄</option>
+      </select>
+      <h2>你的选择是{{fruits}}</h2>
+ 
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:"#app",
+      data() {
+        return {
+          select : "苹果",
+          fruits : []
+        }
+      }
+    })
+  </script>
+</body>
+</html>
