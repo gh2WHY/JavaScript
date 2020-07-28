@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input id="content" type="text">
+  <script>
+    function throttle(fn, interval) {
+      //记录上一次执行的时间,设置为0
+      var last = 0;
+      return function () {
+        var _this = this;
+        var _arguments = arguments;
+
+        //获取当前时间
+        var nowTime = new Date().getTime();
+        //如果触发事件的事件间隔大于我们设置的,就执行函数
+        if (nowTime - last > interval) {
+          fn.apply(_this, _arguments);
+          //为last重新赋值为当前时间
+          last = nowTime;
+        }
+      }
+    }
+
+  </script>
+  <script>
+ let search = document.getElementById('content');
+    let num = 0;
+    function searchChange() {
+      num++;
+      console.log(`发送${num}次网络请求`);
+    }
+
+       // 对searchChange处理
+       var _searchChange = throttle(searchChange, 500);
+    // 绑定oninput
+    search.oninput = _searchChange;
+  </script>
+</body>
+
+</html>

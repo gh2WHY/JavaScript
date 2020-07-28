@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<!-- <body>
+  <input type="text" id="content">
+  <script>
+    let search = document.getElementById('content');
+
+    let num = 0;
+
+    function searchChange(event) {
+      num++;
+      console.log(`发送${num}次网络请求`);
+      // console.log(this)
+      // console.log(event)
+    }
+
+    // 绑定oninput事件
+
+    //     - 定义debounce函数要求传入两个参数
+    // 	- 需要处理的函数fn；
+    // 	- 延迟时间；
+    // - 通过定时器来延迟传入函数fn的执行
+    // 	- 如果在此期间有再次触发这个函数，那么clearTimeout取消这个定时器；
+    // 	- 如果没有触发，那么在定时器的回调函数中执行即可；
+    // function debounce(fn, delay) {
+    //   var timer = null;
+    //   //如果函数再次执行,清除定时器
+    //   if (timer) clearTimeout(timer);
+    //   return function () {
+    //     timer = setTimeout(function () {
+    //       fn();
+    //     }, delay);
+    //   }
+    // }
+    function debounce(fn, delay) {
+      var timer = null;
+      return function () {
+        if (timer) clearTimeout(timer);
+        // 获取this和argument
+        var _this = this;
+        var _arguments = arguments;
+        timer = setTimeout(function () {
+          // 在执行时，通过apply来使用_this和_arguments
+          fn.apply(_this, _arguments);
+        }, delay);
+      }
+    }
+    // 对searchChange处理
+    var _searchChange = debounce(searchChange, 3000);
+    // 绑定oninput
+    search.oninput = _searchChange;
+
+  </script>
+</body> -->
+
+</html>
