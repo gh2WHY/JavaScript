@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <com @add-num = "totalChange" @sub-num = "totalChange"></com>
+    <h2>点击总次数{{total}}</h2>
+
+
+</div>
+
+<template id = "com">
+    <div>
+        <button @click = "addNum">+1</button>
+        <button @click = "subNum">-1</button>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    const com = {
+        template:"#com",
+        data() {
+            return {
+                num : 1,
+            }
+        },
+        methods:{
+            addNum() {
+                this.num++;
+                this.$emit("add-num",this.num)
+                // console.log(this.num);
+            },
+            subNum() {
+                this.num--;
+                this.$emit('sub-num',this.num)
+            }
+        }
+    }
+    const app = new Vue({
+        el:"#app",
+        data:{
+            message:"你好,派大星",
+            total:0,
+        },
+        methods: {
+            totalChange(counter) {
+                this.total = counter;
+            }
+        },
+        components:{
+            com,
+        }
+    })
+</script>
+</body>
+</html>

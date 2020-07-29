@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+
+    <com></com>
+    <!--  插槽的基本使用    -->
+    <com>
+        <button slot = "left">提交</button>
+    </com>
+
+    <com>
+        <input type="text" slot = "center">
+    </com>
+
+    <com>
+        <h2 slot = "right">天上人间</h2>
+    </com>
+</div>
+
+<template id="com">
+    <div>
+        <!--设置插槽的默认内容-->
+        <slot name = "left">我是左侧</slot>
+        <slot name = "center">我是中间</slot>
+        <slot name = "right">我是右侧</slot>
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+    const com = {
+        template:"#com",
+    }
+    const app = new Vue({
+        el:"#app",
+        data:{
+            message:"你好"
+        },
+        components:{
+            com
+        }
+    })
+</script>
+</body>
+</html>

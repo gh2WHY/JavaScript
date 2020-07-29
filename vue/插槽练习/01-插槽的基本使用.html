@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        {{message}}
+        <com></com>
+        <!--  插槽的基本使用    -->
+        <com><button>提交</button></com>
+        <com><button>注册</button></com>
+        <com><input type="text"></com>
+    </div>
+
+    <template id="com">
+        <div>
+            <h5>hello world</h5>
+            <!--设置插槽的默认内容-->
+            <slot><span>你好世界</span></slot>
+        </div>
+    </template>
+    <script src="../js/vue.js"></script>
+    <script>
+        const com = {
+            template:"#com",
+        }
+        const app = new Vue({
+            el:"#app",
+            data:{
+                message:"你好"
+            },
+            components:{
+                com
+            }
+        })
+    </script>
+</body>
+</html>

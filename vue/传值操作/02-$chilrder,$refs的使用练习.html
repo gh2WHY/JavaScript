@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <button @click="print">父组件中的按钮</button>
+    <com ref = "aaa"></com>
+
+</div>
+
+<template id = "com">
+    <div>
+        <button @click = "btnClick">子组件中的按钮</button>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    const com = {
+        template:"#com",
+        data() {
+            return {
+                num : 1,
+            }
+        },
+        methods:{
+            btnClick() {
+                this.num++;
+
+                // console.log(this.num);
+            }
+        }
+    }
+    const app = new Vue({
+        el:"#app",
+        data:{
+            message:"你好,派大星",
+            total:0,
+        },
+        methods: {
+           print() {
+               //访问到的数据是数组
+               // console.log(this.$children[0].num)
+               console.log(this.$refs.aaa)
+           }
+        },
+        components:{
+            com,
+        }
+    })
+</script>
+</body>
+</html>
