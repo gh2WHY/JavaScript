@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <div id="app">
+    <button @click = 'change'>点击切换隐藏显示</button>
+    <h2 v-show = 'isShow'>我可以显示也可以隐藏哦</h2>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        isShow: true
+      },
+      methods: {
+        change() {
+          this.isShow = !this.isShow;
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>

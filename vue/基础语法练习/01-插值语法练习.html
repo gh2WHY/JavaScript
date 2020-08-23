@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .actived{
+      color : orangered
+    }
+  </style>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <div id="app">
+   <h2>{{fisrtName}} {{lastName}}</h2>
+   <h2>{{fullName}}</h2>
+  </div>
+  <script>
+    const app = new Vue({
+      el : '#app',
+      data : {
+        fisrtName : '张',
+        lastName : '子枫'
+      },
+      computed: {
+        fullName() {
+          return this.fisrtName + ' ' + this.lastName
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <!-- <div id="app">
+    <ul v-for = 'item in movies'>
+      <li>{{item}}</li>
+    </ul>
+    -------------------
+    <ul v-for = '(item,index) in movies'>
+      <li>{{index+1}}.{{item}}</li>
+    </ul>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        movies : ['只有芸知道','大话西游','幸福来敲门','疯犬少年的天空']
+      },
+      methods: {
+        change() {
+          this.isShow = !this.isShow;
+        }
+      }
+    })
+  </script> -->
+  <div id="app">
+    <ul >
+      <li v-for = '(value,key,index) in info'>
+        {{index}} {{key}}-{{value}}
+      </li>
+    </ul>
+  </div>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        info : {
+          name : 'why',
+          age : 18,
+          sex : '女'
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

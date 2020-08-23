@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .actived{
+      color : orangered
+    }
+  </style>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <div id="app">
+   <h2>{{counter}}</h2>
+  </div>
+  <script>
+    const app = new Vue({
+      el : '#app',
+      data : {
+        counter : 1,
+      },
+      methods: {
+        increament() {
+          this.counter += 1;
+        },
+        discreament() {
+          this.counter -= 1;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
