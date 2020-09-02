@@ -536,3 +536,372 @@ then方法的回调函数中依旧可以嵌套异步任务
 
 
 ```
+
+## promise的catch
+```js
+const p = new PRomise((resolve.reject)=> {
+	setTimeout(() => {
+		reject('出错了')
+	},1000)
+})
+//捕获错误 小飞老师promise
+p.catch((err) {
+	console.warn(err);
+})
+```
+## es6集合介绍和api
+### set
+它类似于数组,但成员的值都是唯一的.
+```js
+let s = new Set();
+let s2 = new Set(['大事','小事','坏事','小事'])
+//自动去重
+console.log(s2) ;  //(['大事','小事','坏事',]
+```
+元素个数 : s2.size
+添加元素 : s2.add('喜事');
+删除元素 : s2.delete('坏事');
+检测元素 : s2.has('大事') //返回布尔值
+清空集合 : s2.clear()
+可以使用for of 遍历数组
+
+### 常见案例
+```js
+let arr = [1,2,3,4,5,2,1]
+//1. 数组去重
+let result = [...new Set(arr)]
+
+//2. 交集
+let arr2 = [1,2,3,4];
+//先对数组进行去重
+let result = [...new Set(arr)].filter(item => {
+	let s2 = new Set(arr2); //s2变成集合
+	if(s2.has(item)) {
+		return true;
+	}else {
+		retunr false;
+	}
+});
+
+//并集
+let union = [...new Set([...arr,...arr2])];
+
+//差集
+let diff = [...new Set(arr)].filter(item => !new Set(arr2).has(item))
+```
+
+## es6的map与api介绍
+map数据节后,类似与对象,也是键值对的集合,但是建的范围不局限于字符串
+```js
+let m = new map();
+//添加元素
+m.set('name','why');
+m.set('change',function() {
+	consoloe.log('1111')
+})
+
+let key = {scholl,'ATGUIGU'};
+m.set(key,['背景','上海,'深圳']);
+
+//长度
+m.size
+
+//删除
+m.deltte('name');
+
+//获取
+m.get(key);
+
+//清空
+m.clear()
+
+//使用for of 循环
+for(let key of m) {
+	console.log(key)
+}
+```
+
+## class类
+```js
+//es5语法
+function Phone(brand,price) {
+	this.brand = brand;
+	this.price = price;
+}
+Phone.prototype.call = function () {
+	console.log('我可以打电话')
+}
+let phone1 = new Phone('小米',999)
+```
+```js
+//es6语法
+class Phone{
+	construct(brand,price) {
+		this.brand = brand;
+		this.price = price;
+	}
+	//方法必须使用该语法,不能使用es5的形式
+	call() {
+		console.log('我能打电话')
+	}
+}
+
+let oneplus = new Phone('华为meta',2100);
+```
+### class中的静态成员
+```js
+//构造函数本身也是一个对象
+function Phone() {
+
+}
+//属于函数对象,不属于实例对象
+Phone.name = 'shouji';
+Phone.change = function() {
+	console.log('改变世界')
+}
+let phone = new Phone('小米',999);
+//报错
+console.log(nokia.name);
+nokia.change();
+```
+```js
+class Phone{
+	static name = '手机',
+	static change() {
+		console.log('改变世界')
+	}
+}
+let phone = new Phone();
+console.log(phone.name);  //报错
+console.lof(Phone.name); //手机
+
+static声明的属性属于类而不属于实例
+```
+
+### es5使用构造函数实现继承
+```js
+function Phone(brand,price) {
+	this.brand = brand;
+	this.price = price;
+}
+Phone.prototype.call = function () {
+	console.log('我可以打电话')
+}
+
+function smartphone(brand,phone,color,size) {
+	//调用父级中的初始化代码
+	Phone.call(this,brand,price);
+	this.color = color;
+	this.size = size;
+}
+
+//实现继承还需要设置原型
+smartPhone.prototype = new Phone;
+smartPhone.prototype.construct = smartPhone;
+
+//声明子类的方法
+smart.prototype.photo = function() {
+	console.log('我可以拍照');
+}
+
+let chuizi = new smartPhone('锤子',1999,black,5.5)
+```
+### es6class类继承
+```js
+class Phone{
+	construct(brand,price) {
+		this.brand = brand;
+		this.price = price;
+	}
+	//方法必须使用该语法,不能使用es5的形式
+	call() {
+		console.log('我能打电话')
+	}
+}
+
+//声明子类
+class smartPhone extends Phone{
+	//子类的构造方法
+	construct(brand,price,color,size) {
+		//使用super关键字实现对父类方法的调用
+		super(brand,price);
+		this.color = color;
+		this.size = size;
+	}
+	
+	photo() {
+		console.log('拍照')
+	}
+	
+	const xiao = new Phone('小米',1999,'heise',5,5)
+}
+```
+### es6子类对父类方法的重写
+```js
+class Phone{
+	construct(brand,price) {
+		this.brand = brand;
+		this.price = price;
+	}
+	//方法必须使用该语法,不能使用es5的形式
+	call() {
+		console.log('我能打电话')
+	}
+}
+
+//声明子类
+class smartPhone extends Phone{
+	//子类的构造方法
+	construct(brand,price,color,size) {
+		//使用super关键字实现对父类方法的调用
+		super(brand,price);
+		this.color = color;
+		this.size = size;
+	}
+	
+	photo() {
+		console.log('拍照')
+	}
+	call() {
+		console.log('我能打视频')
+	}
+	}
+	const xiao = new Phone('小米',1999,'heise',5,5)
+
+```
+## es6中对象方法扩展
+object.is 判断两个值是否完全相等
+```js
+console.log(Object.is(120,121))   //fasle;
+console.log(Object.is(NaN,NaN))   //true
+console.log(NaN===NaN)            //fasle
+```
+Object.assign对象的和并
+```js
+const obj1 = {
+	name : 'why',
+	age : 18,
+}
+cosnt obj2 = {
+	sex : '女'
+}
+```
+Object.setPrototypeOf Object.getPrototypeOf 
+
+## es6的模块化
+AMD CMD commenJS es6
+优势 : 
+1. 防止命名冲突
+2. 代码复用
+3. 高维护性
+
+### es6模块化的语法
+两个主要命令 export import
+export 用于规定模块的对外接口
+import 输入其他模块提供的功能
+
+1. 安装工具  babel-cli babel-preaet-env browserify(webpack)
+2. npm 安装上面的工具
+3. npmx babel src/js(原文件目录) -d dist.js(目标文件) --preset=babel-preset-env
+
+# es7新特性
+## Array.prototype.includes
+```js
+let arr = ['西游记','红楼梦','水浒传','三国演义']
+console.log(arr.inculde('西游记'));  //true
+```
+## **
+求幂 Math.pow()
+
+# es8新特性
+## async和await
+async和await两种语法结合可以让一步代码想同步代码一样
+
+### async函数
+1. async函数的返回值为promise对象
+2. promise对象的结果有async函数执行的返回值决定
+```js
+//async函数,返回解雇是promise
+	async function foo() {
+	//返回字符串
+		return 'up'
+		//只要返回的结果不是一个promise类型的对象
+		//则这个函数的返回结果都是一个成功的promise对象
+		return //默认返回undefined
+		//抛出错误
+		//返回的结果是一个失败的promise
+		throw new Error('出错了')
+		//返回的结果如何是一个promise对象
+		return new Promise((resolve,reject) => {
+		resolve('成功的数据')
+		})
+	}
+	const res = foo();
+	console.log(res);  //值是一个promise
+```
+
+### await表达式
+1. await 必须写在async函数中
+2. await右侧的表达式一般为promise对象
+3. await返回的是promise成功的值
+4. await的promise失败了.就会抛出异常,需要用try..catch捕获处理
+```js
+cosnt p = new Promise((resolve,rejiect) => {
+	//resolve('成功的值')
+    reject('出错了')
+})
+
+asynv function main() {
+	try {
+        let res = await p;
+	console.log(res);
+    }catch(err) {
+        console.log(err);
+    }
+}
+
+main()
+```
+### 二者结合实践放ajax
+```js
+//发送ajax.返回promise
+function sendAjax(url) {
+	const p = new Promise((resolve,reject) => {
+		//1.创建对象
+	const xhr = new XMLHttpREquest;
+	xhr.open('GET',url);
+	xhr.send();
+	
+	xhr.onreadstatechange = function() {
+		if(xhr.readysate === 0) {
+			if(xhr.status >= 200 && shr.status <300) {
+				//成功,掉resovle
+				resolve('陈宫了')
+			}esle {
+				reject('失败')
+			}
+		}
+	}
+	})
+}
+
+//测试
+sendAJax('fdfd')
+```
+
+
+# 网络学习
+http和https
+
+
+
+ddsfdsfdxv
+
+
+
+
+
+
+
+
+
