@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+	<script>
+		var a = {
+			name :'why',
+			age : 18,
+			hoddy : ['电影','小说','漫画']
+		}
+
+		var b;
+		function deepCopy(newObj,oldObj) {
+			for(let key in oldObj) {
+				let item = oldObj[key];
+				//判断item书否是数组
+				if(item  instanceof Array) {
+					newObj[key] = [];
+					deepCopy(newObj,item);
+				}else if(item  instanceof Object) {
+					//判断是否是对象
+					newObj[key] = {};
+					deepCopy(newObj,item);
+				}else{
+					
+				}
+			}
+			console.log(newObj);
+			console.log(oldObj);
+		}
+		deepCopy(b,a)
+
+	</script>
+ </body>
+</html>
