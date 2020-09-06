@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //   function change(str) {
+    //     let upWord = 0;
+    //     let lowWord = 0;
+    //     let arr =new Array(123);
+    //     for(let i = 0 ; i < arr.length ;i ++) {
+    //       if(i >= 65 && i <= 90) {
+    //         arr[i] = true;
+    //       }else if(i >= 97 && i <= 122) {
+    //         arr[i] = false;
+    //       }
+
+    //     }
+    //     for(let j = 0 ; j <str.length ; j ++) {
+    //       if( arr[str.charCodeAt(j)]) {
+    //         upWord ++;
+    //       }else {
+    //         lowWord++;
+    //       }   
+    //     }
+    //     let res = Math.abs(upWord - lowWord) / 2;
+    //     console.log(res)
+    // }
+    // change('asaedS')
+
+    // let res = new Array(4);
+    // for (let i = 0; i < res.length; i++) {
+    //   res[i] = 0;
+    // }
+
+    // var str = 'abc';
+    // str[1] = 'f';
+
+    // console.log(str);
+
+    // let person = {
+    //   name : 'why'
+    // };
+    // person['name'] = 'gh';
+    // console.log(person) //{name :'gh'}
+
+    // let arr = [1,2,3,4];
+    // arr[3] = 5;
+    // console.log(arr);   //[1,2,3,5]
+
+    // var a = '李华';
+    // var b = a;
+    // console.log(a,b);  //李华 李华
+
+    // b = '韩梅梅';
+    // console.log(a,b)  //李华 韩梅梅
+
+    // var obj = {name :'why',age : 18,hobby :['电影','阅读','音乐']};
+    // var o = {};
+    // //浅拷贝一份obj
+    // for(let k in obj) {
+    //   o[k] = obj[k];
+    // }
+    // console.log(o); //{name :'why',age : 18,hobby :['电影','阅读','音乐']};
+
+    // //改变对象中的简单数据类型观察是否有影响
+    // o.age = 12;
+    // console.log(obj.age,o.age);  // 18 12
+
+    // //改变复杂数据类型观察
+    // o.hobby[1] = '超级爱吃火锅';
+    // console.log(obj.hobby);  //["电影", "超级爱吃火锅", "音乐"]
+    // console.log(o.hobby);    //['电影','阅读','音乐']
+
+    // var obj = {name :'why',age : 18,hobby :['电影','阅读','音乐']};
+    // var o = obj;
+    // //改变对象中的简单数据类型观察是否有影响
+    // o.age = 12;
+    // console.log(obj.age,o.age);  //12
+    // //改变对象中的简单数据类型观察是否有影响
+    // o.hobby[1] = '吃嘛嘛香';
+    // console.log(obj.hobby);  // ["电影", "吃嘛嘛香", "音乐"]
+    // console.log(o.hobby);    // ["电影", "吃嘛嘛香", "音乐"]
+
+    var obj = { name: 'why', age: 18, hobby: ['电影', '阅读', '音乐'] };
+    var o = {};
+    // for(let k in obj) {
+    //   let item = obj[k];
+    //   if(item instanceof Array) {
+    //     console.log(11)
+    //     o[k] = [];
+    //     for(index in item) {
+    //       o[k][index] = item[index];
+    //     }
+    //   }else{
+    //     o[k] = item;
+    //   }
+
+    // }
+    // console.log(o)
+
+    // //修改对象中的简单数据类型观察
+    // o.name = 'gh';
+    // console.log(obj.name, o.name);  //why gh
+
+    // //修改复杂数据类型观察
+    // o.hobby[1] = '看你变了没';
+    // console.log(obj.hobby);   // ["电影", "阅读", "音乐"]
+    // console.log(o.hobby);     //["电影", "看你变了没", "音乐"]
+
+
+    //封装深拷贝函数
+    function deepCopy(newObj, oldObj) {
+      for (k in oldObj) {
+        let item = oldObj[k];
+        //判断旧对象的属性是不是数组
+        if (item instanceof Array) {
+          //初始化newObj对象对用的属性为数组
+          newObj[k] = [];
+          //再次调用深拷贝函数
+          deepCopy(newObj[k], item)
+          //判断旧对象的属性是不是对象
+        } else if (item instanceof Object) {
+          //初始化newObj对象对用的属性为对象
+          newObj[k] = {};
+          //再次调用深拷贝函数
+          deepCopy(newObj[k], item)
+          //否则就是普通类型数据,直接进行拷贝
+        } else {
+          newObj[k] = item;
+        }
+      }
+    }
+
+    deepCopy(o,obj);
+    console.log(o)
+       //修改对象中的简单数据类型观察
+    o.name = 'gh';
+    console.log(obj.name, o.name);  //why gh
+
+    //修改复杂数据类型观察
+    o.hobby[1] = '看你变了没';
+    console.log(obj.hobby);   // ["电影", "阅读", "音乐"]
+    console.log(o.hobby);     //["电影", "看你变了没", "音乐"]
+
+    console.log(Array instanceof Object)
+  </script>
+</body>
+
+</html>
