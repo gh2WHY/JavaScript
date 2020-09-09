@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div class="app">
+    <div ref="msgDiv">{{msg}}</div>
+    <div v-if="msg1">Message got outside $nextTick: {{msg1}}</div>
+    <div v-if="msg2">Message got inside $nextTick: {{msg2}}</div>
+    <div v-if="msg3">Message got outside $nextTick: {{msg3}}</div>
+    <button @click="changeMsg">
+        Change the Message
+    </button>
+</div>
+<script>
+    for (var i=0; i<5; i++) {
+        (function (i) {
+            setTimeout(() =>{
+                console.log(i)
+            }, 1000)
+        })(i)
+    }
+    new Vue({
+        el: '.app',
+        data: {
+            msg: 'Hello Vue.',
+            msg1: '',
+            msg2: '',
+            msg3: ''
+        },
+        methods: {
+            changeMsg() {
+                this.msg = "Hello world."
+                this.msg1 = this.$refs.msgDiv.innerHTML
+                this.$nextTick(() => {
+                    this.msg2 = this.$refs.msgDiv.innerHTML
+                })
+                this.msg3 = this.$refs.msgDiv.innerHTML
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

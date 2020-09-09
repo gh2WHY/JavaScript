@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container {
+            display:flex;
+            width: 600px;
+            height: 400px;
+            border:1px solid red;
+        }
+
+        /*.left {*/
+        /*    float: left;*/
+        /*    width: 200px;*/
+        /*    height: 400px;*/
+        /*    background-color: lightpink;*/
+        /*}*/
+
+        /*.right {*/
+        /*    height: 400px;*/
+        /*    background-color: orangered;*/
+        /*    margin-left : 200px;*/
+        /*}*/
+
+
+        .left{
+               width: 300px;
+               height:400px;
+               background:red;
+               opacity:0.3;
+           }
+        .right{
+            background:green;
+            height:400px;
+            flex-grow:1;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+
+    <img src="./img/伪元素.png" alt="weqe" title="伪元素">
+</body>
+</html>
