@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            display: flex;
+            flex-direction: column;
+        }
+        .item{
+            flex-basis: 100px;
+            display: flex;
+            justify-content:center;
+            align-items: center;
+            border: 1px solid #000;
+        }
+
+        .row {
+            display: flex;
+            flex : 1;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="item"><span>一等奖</span></div>
+        <div class="item"><span>二等奖</span></div>
+        <div class="item"><span>三等奖</span></div>
+    </div>
+    <div class="row">
+        <div class="item"><span>四等奖</span></div>
+        <span class="item"><span>开始</span></span>
+        <div class="item"><span>五等奖</span></div>
+    </div>
+    <div class="row">
+        <div class="item"><span>六等奖</span></div>
+        <div class="item"><span>七等奖</span></div>
+        <div class="item"><span>八等奖</span></div>
+    </div>
+</div>
+</body>
+</html>

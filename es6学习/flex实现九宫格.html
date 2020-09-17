@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin : 0;
+            padding : 0;
+            list-style: none;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top : 0;
+            bottom : 0;
+            right : 0;
+            left : 0;
+            margin : auto;
+            border : 1px solid pink;
+
+        }
+
+        li {
+            flex-basis: calc(calc(100% / 3) - 10px);
+            margin:5px;
+            background-color: #58a;
+        }
+
+
+    </style>
+</head>
+<body>
+<p>123323424</p>
+<p>地方都发的那个OK高某人</p>
+    <ul class="container">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+    </ul>
+
+<!--a的点击事件和跳转哪个先触发-->
+    <a href="http://www.baidu.com" id = 'baidu'>百度</a>
+
+<script>
+    let el = document.querySelector('#baidu');
+    el.onclick = function () {
+        alert(123)
+
+        //阻止a标签跳转即阻止a标签的默认事件,return false即可
+        return false;
+    }
+</script>
+</body>
+</html>

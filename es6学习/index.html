@@ -6,7 +6,38 @@
 </head>
 <body>
     <script>
+       function f(a,b) {
+            if(a.length < b.length) {
+                a = '0' + a
+            }
+           if(a.length > b.length) {
+               b = '0' + b
+           }
 
+           var addOne = 0;
+           var res = [];
+           for(var i = a.length; i>=0 ;i--) {
+               var c1 = a.charAt(i) -0;
+               var c2 = b.charAt(i) - 0 ;
+               var sum = c1+c2 + addOne;
+               if(sum > 9) {
+                   addOne = 1;
+                   res.unshift(sum-10);
+               }else{
+                   addOne = 0;
+                   res.unshift(sum);
+               }
+           }
+           if(addOne) {
+               res.unshift(addOne);
+           }
+           if(res[0] == 0) {
+               res.splice(0,1);
+           }
+           return res.join('')
+
+
+       }
     </script>
 </body>
 </html>
