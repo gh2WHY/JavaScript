@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<span style="color:red">我</span>
+<span style="color:green">爱</span>
+<span style="color:pink">你</span>
+<script>
+    // const p = new Promise((resolve,reject) => {
+    //     setTimeout(() => {
+    //         let t = Date.now();
+    //         if(t % 2 === 0 ) {
+    //             resolve('成功')
+    //         }else{
+    //             reject('失败')
+    //             // throw Error('我们处理失败了')
+    //         }
+    //     },100)
+    // })
+    // console.log(p)
+    //
+    // p.then(
+    //     value => {console.log('value', value)},
+    //     reason => {console.log('reason', reason)}
+    // )
+    // p.then((value) => {
+    //     console.log(value)
+    // }).catch(err =>  {
+    //     console.log(err)
+    // })
+
+
+    //链式调用案例
+
+    // foo1(function(res1) {
+    //    foo2(res1,function (res2) {
+    //        foo3(res2,function (res3) {
+    //            console.log('Got the final result:' + finalResult)
+    //        },failureCallback)
+    //    },failureCallback)
+    // },failureCallback)
+
+
+    //promise的语法糖
+   // new Promise((resolve,reject) => {
+    //      setTimeout(() => {
+    //          let t = Date.now();
+    //          if(t % 2 === 0 ) {
+    //              resolve('成功的回调')
+    //          }else{
+    //              reject('失败的回调')
+    //              // throw Error('我们处理失败了')
+    //          }
+    //      },100)
+    //  }).then(value => {
+    //      console.log(value)
+    // }).catch(reason => {
+    //     console.log(reason)
+    // })
+
+
+    //promise的resolve和reject方法
+    // const  p = new Promise(resolve => {
+    //     resolve(1)
+    // })
+    // p.then(value => {console.log(value)})
+
+    //简写如下
+    // const p1 = Promise.resolve('我是第一个成功的回调');
+    // const p2 = Promise.resolve('我是第二个成功的回调');
+    // const p3 = Promise.reject('我是失败的回调');
+
+    // p1.then(value => console.log(value));
+    // p2.then(value => console.log(value));
+    // p3.catch(reason => console.log(reason));
+
+    //promise.all(iterable)方法,iterable：包含 n 个 promise 的可迭代对象，如 Array 或 String
+
+
+    // const pAll1 = Promise.all([p1,p2]);
+    // pAll1.then(
+    //     value => {console.log('执行成功',value)},  //成功之后的value是一个数组 执行成功  ["我是第一个成功的回调", "我是第二个成功的回调"]
+    //     reason => {console.log('执行失败',reason)},
+    // )
+
+    //promise.race() s接受数组.谁最先完成就返回谁的值
+    const p1 = new Promise((resolve => {
+        setTimeout(() => {
+            resolve('我延迟了1s执行')
+        },1000)
+    }))
+
+    const p2 = new Promise((resolve => {
+        setTimeout(() => {
+            resolve('我延迟了2s执行')
+        },2000)
+    }))
+
+    // const p3 = new Promise((resolve,reject) => {
+    //     reject('我是失败的回调')
+    // })
+
+
+    //哪个先执行完成就先输出谁的结果
+    pAll = Promise.race([p1,p2]);
+    pAll.then(
+        value => {console.log(value)},
+        reason => {console.log(reason)}
+    )
+
+    //如何才能改变promisede状态
+    //1. resolve(value)：如果当前是 pending 就会变为 resolved
+    //2. reject(value):如果当前市peding就会变为reject
+    //3. 抛出错误 : 如果当前是 pending 就会变为 rejected
+</script>
+</body>
+</html>

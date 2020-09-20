@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            border : 1px solid lightpink;
+            display: flex;
+        }
+
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box1"></div>
+    </div>
+
+    <script>
+        // var声明的变量会被挂载在window上,而let const 声明的不会被挂载在window上.
+        // let a = 10;
+        // console.log(window.a)
+
+        let a = 20;
+        var b = 30;
+        console.log( window.a, window.b, window.c, window.d);
+        var c = 40;
+        let d = 50;
+    </script>
+</body>
+</html>

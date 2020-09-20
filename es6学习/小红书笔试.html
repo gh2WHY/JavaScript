@@ -1,0 +1,84 @@
+<!-- 模仿实现一个红绿灯，使一个圆形元素按照绿色3秒,黄色2秒,红色1秒循环改变背景色，请编写相关的逻辑代码。 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>红绿灯</title>
+    <style>
+        .lamp {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="lamp" id='circle'></div>
+<script>
+    // var lamp = document.querySelector('.lamp');
+    // let colorChange = [{
+    //     color: 'green',
+    //     time: 3
+    // }, {
+    //     color: 'yellow',
+    //     time: 2
+    // }, {
+    //     color: 'red',
+    //     time: 1
+    // }]
+    // changeColor(colorChange)
+    // // 变换颜色
+    // async function changeColor(arr) {
+    //     while(true) {
+    //         for (var j = 0 ; j < arr.length; j++) {
+    //             lamp.style.backgroundColor = arr[j].color;
+    //             await changeWait(arr[j].time)
+    //         }
+    //     }
+    // }
+    // // 颜色变换等待，封装 promise 同步
+    // function changeWait(time, color){
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(() => {
+    //             resolve()
+    //         }, time * 1000)
+    //     })
+    // }
+
+    function same(str1,str2) {
+        let count = 0;
+        // let arr1 = str1.split('');
+        // let arr2 = str2.split('');
+        //
+      //两个有26个元素的数组,初始化为0,第一个元素
+        let arr1 = new Array(26);
+        for(let i = 0 ; i < 26 ; i++) {
+            arr1[i] = 0 ;
+        }
+        let arr2 = new Array(26);
+        for(let i = 0 ; i < 26 ; i++) {
+            arr2[i] = 0 ;
+        }
+
+        for(let i = 0 ; i < str1.length; i++) {
+           arr1[str1.charCodeAt(i) - 65]++;
+        }
+
+        for(let i = 0 ; i < str2.length; i++) {
+            arr2[str2.charCodeAt(i) - 65]++;
+        }
+
+        for(let i = 0; i < arr1.length ; i++) {
+            console.log( Math.min(arr1[i],arr2[i]))
+        }
+        console.log(count)
+    }
+
+
+    same('AAAAABC','AABCB')
+</script>
+</body>
+</html>

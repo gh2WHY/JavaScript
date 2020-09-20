@@ -30,8 +30,17 @@
             margin:5px;
             background-color: #58a;
         }
+        .red {
+            background-color: red;
+        }
 
-
+        div {
+            width: 100px;
+            height: 100px;
+        }
+        .green {
+            background-color: green;
+        }
     </style>
 </head>
 <body>
@@ -52,14 +61,28 @@
 <!--a的点击事件和跳转哪个先触发-->
     <a href="http://www.baidu.com" id = 'baidu'>百度</a>
 
+    <div class="red green"></div>
+    <div class=" green red"></div>
 <script>
     let el = document.querySelector('#baidu');
     el.onclick = function () {
-        alert(123)
+        // alert(123)
 
         //阻止a标签跳转即阻止a标签的默认事件,return false即可
         return false;
     }
+    var a = 3;
+    function foo() {
+        var a = 0;
+        alert(a);
+        alert(this.a);
+        var a;
+        alert(a)
+    }
+
+    // foo();  //0 3 0
+    // new foo();  //0 undefined 0
+    setTimeout(foo,100)  //0 3 0
 </script>
 </body>
 </html>

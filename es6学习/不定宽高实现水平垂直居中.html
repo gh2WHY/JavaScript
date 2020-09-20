@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*方案一 : 弹性盒模型*/
+        /*.container {*/
+        /*    width: 200px;*/
+        /*    height: 200px;*/
+        /*    border :1px solid #5588aa;*/
+
+        /*    display: flex;*/
+        /*    justify-content: center;*/
+        /*    align-items: center;*/
+        /*}*/
+
+    /* 方案二:弹性盒模型+margin   */
+    /*    .container {*/
+    /*        width: 200px;*/
+    /*        height: 200px;*/
+    /*        border :1px solid #5588aa;*/
+    /*        display: flex;*/
+    /*    }*/
+
+    /*    .container > p {*/
+    /*        margin: auto;*/
+    /*    }*/
+
+    /*    方案三 定位 ,通常用来实现图片的垂直水平居中,不能实现不定宽高的盒子的居中*/
+        div {
+            width: 200px;
+            height: 200px;
+            border :1px solid #5588aa;
+        }
+
+        /*.container {*/
+        /*    position: relative;*/
+        /*}*/
+
+        /*img {*/
+        /*    position: absolute;*/
+        /*    left: 50%;*/
+        /*    top: 50%;*/
+        /*    transform: translate(-50%, -50%);*/
+        /*}*/
+
+    /*    方案四 : 网格布局*/
+    /*    .container {*/
+    /*        display: grid;*/
+    /*    }*/
+
+    /*    p {*/
+    /*        align-self: center;*/
+    /*        justify-self: center;*/
+    /*    }*/
+
+
+    /* 方案五 表格布局   */
+    /*    .container {*/
+    /*        display: table-cell;*/
+    /*        vertical-align: middle;*/
+    /*        text-align: center;*/
+    /*    }*/
+
+
+    /*利用伪元素实现居中   */
+        .container {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+            text-align: center;
+            font-size: 0;
+        }
+
+        .container::before {
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            height:100%;
+            font-size: 14px;
+        }
+
+        img {
+            vertical-align: middle;
+            font-size : 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="./img/伪元素.png" alt="" width="100" height="100">
+<!--        <p>i want to eat</p>-->
+    </div>
+
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+
+    <script>
+        var A  = {n : 4399};
+        var B = function () {
+            this.n = 9999
+        }
+        var C = function () {
+            var n = 8888;
+        }
+        B.prototype = A;
+        C.prototype = A;
+        var b = new B();
+        var c = new C();
+        A.n++;
+        console.log(b.n);
+        console.log(c.n)
+
+
+
+    </script>
+</body>
+</html>

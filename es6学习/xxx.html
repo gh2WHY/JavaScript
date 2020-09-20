@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://www.mihoyo.com/product/list"></script>
+<script>
+    function ajax() {
+        var xhr = new XMLHttpRequest();
+        let result;
+
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState === 4) {
+                result = xhr.responseText;
+            }
+        }
+        xhr.open('get','https://www.mihoyo.com/product/list');
+        xhr.send();
+        console.log(result);
+    }
+    ajax();
+
+
+</script>
+</body>
+</html>
