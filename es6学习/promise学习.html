@@ -87,17 +87,17 @@
     // )
 
     //promise.race() s接受数组.谁最先完成就返回谁的值
-    const p1 = new Promise((resolve => {
-        setTimeout(() => {
-            resolve('我延迟了1s执行')
-        },1000)
-    }))
+    // const p1 = new Promise((resolve => {
+    //     setTimeout(() => {
+    //         resolve('我延迟了1s执行')
+    //     },1000)
+    // }))
 
-    const p2 = new Promise((resolve => {
-        setTimeout(() => {
-            resolve('我延迟了2s执行')
-        },2000)
-    }))
+    // const p2 = new Promise((resolve => {
+    //     setTimeout(() => {
+    //         resolve('我延迟了2s执行')
+    //     },2000)
+    // }))
 
     // const p3 = new Promise((resolve,reject) => {
     //     reject('我是失败的回调')
@@ -105,16 +105,108 @@
 
 
     //哪个先执行完成就先输出谁的结果
-    pAll = Promise.race([p1,p2]);
-    pAll.then(
-        value => {console.log(value)},
-        reason => {console.log(reason)}
-    )
+    // pAll = Promise.race([p1,p2]);
+    // pAll.then(
+    //     value => {console.log(value)},
+    //     reason => {console.log(reason)}
+    // )
 
     //如何才能改变promisede状态
     //1. resolve(value)：如果当前是 pending 就会变为 resolved
     //2. reject(value):如果当前市peding就会变为reject
     //3. 抛出错误 : 如果当前是 pending 就会变为 rejected
+
+    // const p = new Promise((resolve, reject) => {
+    //     //resolve(1)
+    //     reject(2)
+    // })
+    // p.then(
+    //     value => {},
+    //     reason => {console.log('reason',reason)}
+    // )
+    // p.then(
+    //     value => {},
+    //     reason => {console.log('reason2',reason)}
+    // )
+
+
+    //async 和 await 可以让异步代码和同步代码一样
+    //1. async函数的返回结果为promise对象
+    //2. promise对象的状态由async函数执行的返回值决定
+
+    // async function f() {
+        //返回resolved状态的promise
+        // return '123'
+        // Promise {<resolved>: undefined}
+        // return
+        //抛出错误
+        //返回的结果是一个失败的promise
+        // throw Error('出错了')
+
+        //返回的结果如何是一个promise对象
+        // return new Promise((resolve,reject) => {
+    //         resolve('成功的数据')
+    //     })
+    // }
+    //
+    // let result = f();
+    // result.then(
+    //     value => {console.log(value)},
+    //     reason => {console.log(reason)}
+    // )
+    
+    //async必须卸载await函数中,async中可以没有await
+    // function f1() {
+    //     return new Promise((resolve => {
+    //         setTimeout(() => {
+    //             resolve(1)
+    //         },1000)
+    //     }))
+    // }
+    //
+    // function f2() {
+    //     return 2;
+    // }
+    // function f4() {
+    //     return new Promise((resolve,reject) => {
+    //         setTimeout(() => {
+    //             reject(1)
+    //         },1000)
+    //     })
+    // }
+    // //不写 await，只能得到一个 promise 对象。在表达式前面加上 await，
+    // // 1s后将得到 promise 的结果5，但是要用 await 必须在函数上声明 async。
+    // async function f3() {
+    //     // let value =await f1();  //2
+    //     //不是promise,得到的就是值本身
+    //     // let value =await f2();
+    //     //失败的promise
+    //     //报错 Uncaught (in promise) 1
+    //     let value =await f4();
+    //     //没有await,返回一个失败状态的promise
+    //     console.log(value)
+    // }
+    // f3();
+
+    // await 只能得到成功的结果，要想得到失败的结果就要用try/catch：
+    function f1() {
+        return new Promise((resolve,reject)=> {
+            setTimeout(() => {
+                reject(1)
+            },1000)
+        })
+    }
+
+    async function f() {
+        try{
+            let value = await f1();
+            console.log(value)
+        }catch (e) {
+            console.log('得到失败的结果',e)   //得到失败的结果 1
+        }
+    }
+
+    f();
 </script>
 </body>
 </html>

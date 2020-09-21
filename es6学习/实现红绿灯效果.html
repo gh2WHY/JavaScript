@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .container {
+            display: flex;
+            width: 400px;
+            height: 140px;
+            background-color:#F7F7F7;
+            border: 1px solid saddlebrown;
+            border-radius:20px ;
+            margin: auto;
+            margin-top: 100px;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .lamp {
+            display: flex;
+            width: 100px;
+            height: 100px;
+            align-items: center;
+            justify-content: space-around;
+            border-radius: 50%;
+            background-color: #CCC;
+        }
+
+        .lamp > span{
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="lamp red"></div>
+        <div class="lamp green"></div>
+        <div class="lamp yellow"></div>
+    </div>
+
+    <script>
+        //首先获取三个元素
+        let red = document.querySelector('.red');
+        let green = document.querySelector('.green');
+        let yellow = document.querySelector('.yellow');
+
+        //定义一个设置颜色的函数
+        /*params: 颜色,延迟时间,下标
+        *
+        * */
+        let setColor = (color, duration, num) => {
+            return new Promise((res,rej) => {
+                colors(num, color)
+                setTimeout(res, duration)
+            })
+        }
+
+        let colors = (num, color) => {
+            if(num === 1) {
+                red.style.background = color
+                green.style.background = '#E2DCDC'
+                yellow.style.background = '#E2DCDC'
+            }
+            if(num === 2) {
+                green.style.background = color;
+                red.style.background = '#E2DCDC';
+                yellow.style.background = '#E2DCDC';
+            }
+            if(num === 3) {
+                yellow.style.background = color;
+                green.style.background = '#E2DCDC';
+                red.style.background = '#E2DCDC';
+            }
+        }
+        async function change() {
+            await setColor('green', 6000, 1);
+            await setColor('yellow', 2000, 2);
+            await setColor('red', 4000, 3);
+        }
+        change();
+    </script>
+</body>
+</html>
+

@@ -18,67 +18,67 @@
 <body>
 <div class="lamp" id='circle'></div>
 <script>
-    // var lamp = document.querySelector('.lamp');
-    // let colorChange = [{
-    //     color: 'green',
-    //     time: 3
-    // }, {
-    //     color: 'yellow',
-    //     time: 2
-    // }, {
-    //     color: 'red',
-    //     time: 1
-    // }]
-    // changeColor(colorChange)
-    // // 变换颜色
-    // async function changeColor(arr) {
-    //     while(true) {
-    //         for (var j = 0 ; j < arr.length; j++) {
-    //             lamp.style.backgroundColor = arr[j].color;
-    //             await changeWait(arr[j].time)
-    //         }
-    //     }
-    // }
-    // // 颜色变换等待，封装 promise 同步
-    // function changeWait(time, color){
-    //     return new Promise((resolve, reject) => {
-    //         setTimeout(() => {
-    //             resolve()
-    //         }, time * 1000)
-    //     })
-    // }
-
-    function same(str1,str2) {
-        let count = 0;
-        // let arr1 = str1.split('');
-        // let arr2 = str2.split('');
-        //
-      //两个有26个元素的数组,初始化为0,第一个元素
-        let arr1 = new Array(26);
-        for(let i = 0 ; i < 26 ; i++) {
-            arr1[i] = 0 ;
+    var lamp = document.querySelector('.lamp');
+    let colorList = [{
+        color: 'green',
+        time: 3
+    }, {
+        color: 'yellow',
+        time: 2
+    }, {
+        color: 'red',
+        time: 1
+    }]
+    changeColor(colorList)
+    // 变换颜色
+    async function changeColor(arr) {
+        while(true) {
+            for (var j = 0 ; j < arr.length; j++) {
+                lamp.style.backgroundColor = arr[j].color;
+                await changeWait(arr[j].time)
+            }
         }
-        let arr2 = new Array(26);
-        for(let i = 0 ; i < 26 ; i++) {
-            arr2[i] = 0 ;
-        }
-
-        for(let i = 0 ; i < str1.length; i++) {
-           arr1[str1.charCodeAt(i) - 65]++;
-        }
-
-        for(let i = 0 ; i < str2.length; i++) {
-            arr2[str2.charCodeAt(i) - 65]++;
-        }
-
-        for(let i = 0; i < arr1.length ; i++) {
-            console.log( Math.min(arr1[i],arr2[i]))
-        }
-        console.log(count)
+    }
+    // 颜色变换等待，封装 promise 同步
+    function changeWait(time){
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve()
+            }, time * 1000)
+        })
     }
 
+    // function same(str1,str2) {
+    //     let count = 0;
+    //   //两个有26个元素的数组,初始化为0
+    //     let arr1 = new Array(26);
+    //     for(let i = 0 ; i < 26 ; i++) {
+    //         arr1[i] = 0 ;
+    //     }
+    //     let arr2 = new Array(26);
+    //     for(let i = 0 ; i < 26 ; i++) {
+    //         arr2[i] = 0 ;
+    //     }
+    //
+    //     for(let i = 0 ; i < str1.length; i++) {
+    //        arr1[str1.charCodeAt(i) - 65]++;
+    //     }
+    //
+    //     for(let i = 0 ; i < str2.length; i++) {
+    //         arr2[str2.charCodeAt(i) - 65]++;
+    //     }
+    //
+    //     for(let i = 0; i < arr1.length ; i++) {
+    //         count += Math.min(arr1[i],arr2[i])
+    //     }
+    //     console.log(count)
+    // }
+    //
+    //
+    // same('AAAAABC','AABCB')
 
-    same('AAAAABC','AABCB')
+
+
 </script>
 </body>
 </html>
