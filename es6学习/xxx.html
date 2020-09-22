@@ -5,24 +5,32 @@
     <title>Title</title>
 </head>
 <body>
-<script src="https://www.mihoyo.com/product/list"></script>
+<font color="#ff4500"></font>
+<!--<script src="https://www.mihoyo.com/product/list"></script>-->
 <script>
-    function ajax() {
-        var xhr = new XMLHttpRequest();
-        let result;
+    // function ajax() {
+    //     var xhr = new XMLHttpRequest();
+    //     let result;
+    //
+    //     xhr.onreadystatechange = function () {
+    //         if(xhr.readyState === 4) {
+    //             result = xhr.responseText;
+    //         }
+    //     }
+    //     xhr.open('get','https://www.mihoyo.com/product/list');
+    //     xhr.send();
+    //     console.log(result);
+    // }
+    // ajax();
 
-        xhr.onreadystatechange = function () {
-            if(xhr.readyState === 4) {
-                result = xhr.responseText;
-            }
-        }
-        xhr.open('get','https://www.mihoyo.com/product/list');
-        xhr.send();
-        console.log(result);
-    }
-    ajax();
 
+    //map 和 parseint结合案例
+    // const arr = ['10','10','10','10','10','10'];
+    // console.log(arr.map(parseInt));
 
+    ['10','10','10','10','10','10'].map((item,index) => {
+        console.log(parseInt(item,index))
+    })
 </script>
 </body>
 </html>
