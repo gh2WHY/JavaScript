@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script >
+    var name = 'global';
+    var fn = function () {
+        var name = 'fn';
+        console.log(name);
+    }
+
+    function test() {
+        var name = 'test';
+        fn = function () {
+            console.log(name);
+        }
+    }
+
+    test();
+    fn();
+</script>
+</body>
+</html>

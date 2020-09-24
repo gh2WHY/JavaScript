@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var fn ;
+    function a() {
+        var name = 'a';
+        function b() {
+            var name = 'b';
+            function c() {
+                var name = 'c';
+                fn = () => {
+                    console.log(name);
+                }
+            }
+        }
+    }
+    a();
+    fn(); //报错
+</script>
+</body>
+</html>

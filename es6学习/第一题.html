@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function sum( arrStr ) {
+        // write code here
+        var arr = flatten(JSON.parse(arrStr));
+        // var res = flatten(arr)
+        var newArr = unique(arr)
+        console.log(newArr)
+        var result = 0 ;
+        for(let i = 0 ; i < newArr.length ;i++) {
+            result += newArr[i]
+        }
+        return result;
+
+    }
+
+    function flatten(arr) {
+        var result = [];
+        for(let i = 0 ; i < arr.length ;i++) {
+            if(Array.isArray(arr[i])) {
+                result = result.concat(flatten(arr[i]));
+            }else {
+                result.push(arr[i]);
+            }
+        }
+        return result;
+    }
+    function unique(arr) {
+        var result = [];
+        for(let i = 0 ;i < arr.length;i++) {
+            let item = result.indexOf(arr[i])
+            if(item === -1){
+                result.push(arr[i])
+            }
+        }
+        return result;
+    }
+    // console.log(unique([1,1,2,3,3,4]))
+  console.log(  sum('[1,2,[2,4],3,[5,6,[7]]]'))
+    // flatten('[1,2,[3,[4,5]],[6]]')
+    // console.log(   flatten('[1,2,[3,[4,5]],[6]]'))
+
+    function toCamel( key ) {
+        // write code here
+        return key.replace(/([^_])(?:_+([^_]))/g,function($0,$1,$2) {
+            return $1+$2.toUpperCase();
+        })
+    }
+
+    // console.log( toCamel('test_to'))
+
+    function multiply( value ) {
+        // write code here
+
+    }
+
+    //第一个题 计算数组扁平化然后去重之后的和
+    //输入字符串 '[1,2,[2,4],3,[5,6,[7]]]'
+    //输出 28
+    f([1,2,1,2])
+    function f(arr) {
+        for(let i = 0 ; i < arr.length;i++) {
+            for(let j = i+1;j < arr.length ; j++) {
+                if(arr[i] == arr[j]) {
+                    arr.splice(j,1);
+                    j--;
+                }
+            }
+        }
+        console.log(arr)
+    }
+
+</script>
+</body>
+</html>

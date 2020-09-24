@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // var fn = () => {
+    //     var name = 'fn';
+    //     console.log(this.name);
+    // }
+    // var obj = {
+    //     name : 'obj',
+    //     getName() {
+    //         var name = 'obj2';
+    //         this.getName2();
+    //     },
+    //     getName2 :fn
+    // }
+    // obj.getName();
+
+
+    function f(str) {
+        console.log(str)
+        var str1 = str.replace(/,/g,'');
+        var arr = str1.split('');
+        let newArr = [...new Set(arr)];
+        let res = newArr.join(',')
+        return res;
+    }
+    console.log(f('1,2,2,3,4,5,5,6'))
+
+    function getUrlParams(surl,skey) {
+        var result = {};
+        surl.replace(/\??(\w+)=(\w+)&/g,function(a,k,v){
+            if(result[k]) {
+                result[k] = [].concat(result[k],v);
+            }else {
+                result[k] = v;
+            }
+        });
+        if(skey) {
+            return result[skey] || ''
+
+        }else {
+            return result;
+        }
+    }
+
+    console.log(getUrlParams('http://www.test.com?key=1&key=2&key=3&test=4&a=1 ','test'))
+
+    var str = 'http://www.test.com?key=1&key=2&key=3&test=4&a=1 test'
+    var str1 = str.split(' ');
+    console.log(str1[0]);
+    console.log(str1[1])
+</script>
+</body>
+</html>
