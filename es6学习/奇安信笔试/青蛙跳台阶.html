@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   //  function steep(n) {
+   //      var res = 0;
+   //  if(n < 2) {
+   //      res = n;
+   //  }else {
+   //      res = 2*steep(n-1)
+   //
+   //  }
+   //      console.log(res)
+   //  }
+   // steep(10)
+    // let a = 10;
+    // let res = 0;
+    // if(a < 2) {
+    //     console.log(a);
+    // }
+    // for(let i = 0 ; i < a ; i++) {
+    //     res += a +
+    // }
+
+    // function f(n) {
+    //     if(n < 2) {
+    //         return n
+    //     }else {
+    //         return 2*f(n-1)
+    //     }
+    // }
+    // console.log(f(6))
+
+   function leastWorkTime( tasks ,  n ) {
+       // write code here
+       var arr = new Array(10);
+       for(let i = 0;i < 10 ;i++) {
+           arr[i] = 0;
+       }
+       for(let i = 0; i< tasks.length;i++) {
+           arr[tasks[i]]++;
+       }
+
+       for(let i = 0;i < arr.length ;i++) {
+          if( arr[i] === 0) {
+              arr.splice(i,1)
+              i--;
+          }
+       }
+        let res = 0;
+       while(arr.length) {
+           for(let i = 0 ; i < arr.length ; i++) {
+                 arr[i] -= 1;
+                 res += 1;
+                 if(arr[i] == 0) {
+                     arr.splice(i,1);
+                     i--;
+                 }
+           }
+           for(let i = 0 ;i < arr.length ; i++) {
+               if (arr[i] === n && arr.length === n) {
+                   console.log(arr[i])
+                   res += 1
+               }
+           }
+           console.log(arr)
+       }
+       return res-1;
+   }
+
+   console.log(leastWorkTime([1,1,1,2,3,3,3],2))
+</script>
+</body>
+</html>

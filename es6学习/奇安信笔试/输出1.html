@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var test = 'test';
+    function f() {
+        console.log(test);  //直接输入test,相当于输入局部的test,此刻还未定义
+        var test = 'hello';
+        console.log(test);
+    }
+    f();
+</script>
+</body>
+</html>

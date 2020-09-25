@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function f() {
+        try {
+            return 0
+        }catch (e) {
+            return 1
+        }finally {
+            return 2
+        }
+    }
+
+    console.log(f());
+</script>
+</body>
+</html>
