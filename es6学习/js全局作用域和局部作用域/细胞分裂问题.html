@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // temp临时支 = a+b+c;
+    // c = b;
+    // b = a;
+    // a = temp;
+    function f(n) {
+        let a = 1 , b = 0 ,c = 0;
+        for(let i = 1 ; i < n ; i++) {
+            let temp = a + b + c;
+            c = b;
+            b = a;
+            a = temp;
+        }
+        return a+b+c;
+    }
+
+    #include<iostream>
+    using namespace std;
+    int main() {
+        int a = 0,b = 0,k = 0,v =0;
+        while(1) {
+            cin>>a>>b>>k>>v;
+            int res = 0;
+            while(a > 0) {
+                ++res;
+                if(b >= k -1) {
+                    b = k -1;
+                    a = k * v;
+                }else if(b > 0) {
+                    b = 0;
+                    a -= (b+1) *v;
+                }else {
+                    a -= v;
+                }
+            }
+            cout << res;
+        }
+        return 0;
+    }
+</script>
+</body>
+</html>

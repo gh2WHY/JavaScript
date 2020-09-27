@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="box">
+        <div>
+            <p>这是一段文本</p>
+        </div>
+    </div>
+    <input type="button" id = 'btn'>
+    <script>
+        document.querySelector('#btn').onclick = function () {
+            var str = document.querySelector('.box').innerHTML;
+            console.log(str);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // var a = '我是函数外部的变量';
+    // function foo() {
+    //     var a = '我是函数内部的变量'
+    // }
+    // console.log(a)  //我是函数外部的变量
+
+
+    // var a = '我是函数外部的变量';
+    // function foo() {
+    //     b = '我是直接定义的变量';
+    //     var c = '我是函数内部的变量';
+    // }
+    // foo()
+    // console.log(a)  //我是函数外部的变量
+    // console.log(b)  //我是直接定义的变量
+    // console.log(c)  //c is not defined
+
+    // var a = 'apple'
+    // if(true) {
+    //     var a = 'banana'
+    // }
+    // console.log(a)  //banana
+
+    // for(var i = 0 ; i < 3 ;i++) {
+    //     break;
+    // }
+    // console.log(i);  //0
+    // k =5;
+    // while(k>1) {
+    //     k--;
+    //     var m = 10;
+    // }
+    // console.log(k);  //1
+    // console.log(m);  //10
+
+    // var a = 'apple'
+    // var b = 'orange'
+    // function f() {
+    //     var a = 'banana'
+    //     console.log(a);  //banana
+    //     console.log(b);  //orange
+    // }
+    // f();
+    // console.log(a);  //apple
+
+    // var a = 2;
+    // function fn(){
+    //     var a;
+    //     console.log(a)
+    //     a = 3;
+    //     console.log(a);
+    // }
+    // fn();
+    // console.log(a);
+
+    // var a = 5;
+    // function f() {
+    //     console.log(a);  //undefined
+    //     var a = 10;
+    //     console.log(aa());  //10
+    //     function aa() {
+    //         return a;
+    //     }
+    // }
+    // f();
+    //
+    // function f() {
+    //     function aa() {
+    //         return a;
+    //     }
+    //     var a;
+    //     console.log(a);  //undefined
+    //     a = 10;
+    //     console.log(aa());  //10
+    // }
+
+    // var b = 'boy';
+    // console.log(b);
+    // function f() {
+    //     console.log(a);
+    //     console.log(c);
+    //     if(a === 'apple'){
+    //         a = 'Alice'
+    //     }else {
+    //         a = 'Ada'
+    //     }
+    //     console.log(a);
+    //     var a = 'Andy';
+    //     middle();
+    //     function middle() {
+    //         console.log(c++);
+    //         var c = 100;
+    //         console.log(++c);
+    //         small();
+    //         function small() {
+    //             console.log(a);
+    //         }
+    //     }
+    //     var c = a = 88;
+    //     function bottom() {
+    //         console.log(this.b);
+    //         b = 'body'
+    //         console.log(b);
+    //     }
+    //     bottom()
+    // }
+    // f();
+    // console.log(b);
+
+ //    boy
+ //  undefined
+ //  undefined
+ //  Ada
+ //  NaN
+    // 101
+ // Andy
+ // boy
+ // body
+ // body
+
+
+
+</script>
+</body>
+</html>

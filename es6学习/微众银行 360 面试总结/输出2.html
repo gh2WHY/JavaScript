@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function f(value) {
+        switch (value) {
+            case 'A':
+                console.log('Case A');
+                break;
+            case 'B':
+                console.log('Case B');
+                break;
+            case undefined:
+                console.log("Case Undefined");
+                break;
+            default:
+                console.log('Case default');
+        }
+    }
+    f(String('A'));
+    f(new String('A'));
+
+    var a = String('aa');
+    var b = new String('bb');
+
+    console.log(a,b)
+    console.log(a === b)
+    console.log(typeof  a);
+    console.log(typeof b)
+
+    var a = 5 ;
+    function test() {
+        a = 0;
+        alert(a);
+        alert(this.a);
+        var a;
+        alert(a);
+    }
+    new test();
+    a.a = 10;
+</script>
+</body>
+</html>

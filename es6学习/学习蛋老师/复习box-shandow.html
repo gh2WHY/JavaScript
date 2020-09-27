@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 300px;
+            height: 100px;
+            margin-top :20px;
+            border: 1px solid #000;
+            line-height: 100px;
+            text-align: center;
+            margin-left : 30px;
+        }
+        .box {
+            box-shadow: inset 0 0 0 10px #ff9595;
+        }
+        .box1 {
+            box-shadow: inset 0 0 0 10px  gold;
+        }
+
+        .box2 {
+           box-shadow:  3px 3px red, -1em 0 .4em olive;
+        }
+
+        .box3 {
+            box-shadow: .5em .5em red, -.2em -.2em green;
+        }
+
+        .box4 {
+            margin-top : 50px;
+            box-shadow: 0 0 0 5px seagreen, 0 0 0 10px white,18px 18px #ff9595,-18px -18px #ff9595;
+        }
+    </style>
+</head>
+<body>
+<!--向元素添加单个 box-shadow 效果时使用以下规则：-->
+
+<!--当给出两个、三个或四个 <length>值时。-->
+<!--如果只给出两个值, 那么这两个值将会被当作 <offset-x><offset-y> 来解释。-->
+<!--如果给出了第三个值, 那么第三个值将会被当作<blur-radius>解释。-->
+<!-- 如果给出了第四个值, 那么第四个值将会被当作<spread-radius>来解释。-->
+<!--可选，inset关键字。-->
+<!--可选，<color>值。-->
+    <div class="box"></div>
+
+    <div class="box1">
+        清早起床,
+        拥抱太阳,
+        我有慢慢的正能量
+    </div>
+
+    <div class="box2">
+        清早起床,
+        拥抱太阳,
+        我有慢慢的正能量
+    </div>
+
+<div class="box3">
+    清早起床,
+    拥抱太阳,
+    我有慢慢的正能量
+</div>
+
+<div class="box4">
+    清早起床,
+    拥抱太阳,
+    我有慢慢的正能量
+</div>
+</body>
+</html>

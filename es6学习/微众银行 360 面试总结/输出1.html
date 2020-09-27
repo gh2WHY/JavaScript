@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // var v = "hello";
+    // (function () {
+    //     console.log(v);
+    //     function f() {
+    //         //这个v只有在自己的作用域和下属作用域有效
+    //         var v = 'happy';
+    //         console.log(v)
+    //     }
+    //     f();
+    // })()
+
+    var v = "hello";
+    (function () {
+        console.log(v);
+        function f() {
+            //这个v只有在自己的作用域和下属作用域有效
+            console.log(v)
+            var v = 'happy';
+        }
+        f();
+    })()
+
+
+    // function f(x) {
+    //     var temp = 4;
+    //     function f1(y) {
+    //         console.log(x,y)
+    //         document.write(++x + y + (temp--))
+    //     }
+    //     f1(5)
+    // }
+    //
+    // f(6)
+
+
+    function f1(greeting) {
+        function f(name) {
+            greeting = greeting.split('').reverse().join('-');
+            console.log(greeting)
+            console.log(name)
+            return greeting + '' + name;
+        }
+        return f;
+    }
+
+    var day = f1('Good Day to you');
+   alert(day(name));
+
+
+   const student = {name : 'zhangsan'};
+   Object.defineProperty(student,'age',{value :22})
+    console.log(student);
+   console.log(Object.keys(student));
+</script>
+</body>
+</html>
