@@ -31,17 +31,77 @@
     console.log(a === b)
     console.log(typeof  a);
     console.log(typeof b)
+    //
+    // var a = 5 ;
+    // function test() {
+    //     a = 0;
+    //     alert(a);
+    //     alert(this.a);
+    //     var a;
+    //     alert(a);
+    // }
+    // new test();
+    // a.a = 10
+    //
+    // var foo = {
+    //     bar: function () {
+    //         console.log(this);
+    //         return this.baz;
+    //     },
+    //     baz: 1
+    // };
+    //
+    // (function () {
+    //     console.log(arguments[0]())
+    //     console.log(typeof arguments[0]());
+    // })(foo.bar);
+    // var fn=function(){
+    //     console.log(fn)
+    // }
+    // fn()
+    // var obj={
+    //     fn2:function(){
+    //         console.log(this.fn2)
+    //         console.log(fn2)
+    //     }
+    // }
+    // obj.fn2()
 
-    var a = 5 ;
-    function test() {
-        a = 0;
-        alert(a);
-        alert(this.a);
-        var a;
-        alert(a);
+    // const promise = new Promise((resolve,reject)=>{
+    //     console.log(1)
+    //     resolve()
+    //     console.log(2)
+    // })
+    // promise.then(()=>{
+    //     console.log(3)
+    // })
+    // console.log(4)
+
+
+    function findLongest( str ) {
+        // write code here
+        var arr = new Array(26);
+        for(let i = 0; i < 26;i++){
+            arr[i] = 0;
+        }
+
+        for(let i = 0 ; i < str.length ; i++) {
+            arr[str.charCodeAt[i]-97]++;
+        }
+
+        let max = Math.max(...arr);
+        let res = [];
+        let str1 = arr.join('');
+
+        for(let i = 0 ;i < arr.length ; i++) {
+            if(arr[i] === max) {
+                res.push("'" + str1.fromCharCode(i+97) + ':' + arr[i] + "'")
+            }
+        }
+        console.log(res)
     }
-    new test();
-    a.a = 10;
+
+    findLongest('aaabbb')
 </script>
 </body>
 </html>

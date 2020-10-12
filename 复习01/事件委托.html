@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事件委托</title>
+  <style>
+    ul {
+      width: 100%;
+      height: 60px;
+      background-color: orange;
+    }
+    li {
+      width: 100%;
+      height: 20px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <ul>
+      <li>我是第一</li>
+      <li>我是第二</li>
+      <li>我是第三</li>
+    </ul>
+  </div>
+
+    <a href="http://www.baidu.com">百度</a>
+  <script>
+
+    //实现点击每个li的时候弹出响应的内容
+    let ul = document.querySelector('ul');
+    let li = document.querySelectorAll('ul > li');
+    let a = document.querySelector('a');
+    //值得注意的是nodeName获取的节点名是大写的字符串
+    console.log(ul.nodeName)
+    // console.log(li)
+    // ul.onclick = function(ev) {
+    //   console.log(ev.target.innerHTML)
+    // }
+
+    // li.onclick = function(ev) {
+    //   alert(ev.innerHTML);
+    // }
+
+    //普通的需要绑定三次事件,内存浪费,获取三个li,性能浪费
+    // for(var i = 0 ; i < li.length ; i++) {
+    //   (function(j) {
+    //     li[j].onclick = function() {
+    //       alert(li[j].innerHTML)
+    //     }
+    //   })(i)
+    // }
+
+    //使用事件委托
+    ul.onclick = function(ev) {
+      // console.log(ev.target)
+      /*两种方案
+        如果判断是li才弹出内容
+        如果判断是ul,则阻止事件继续执行,否则执行事件
+      */
+
+      
+      // if(ev.target.nodeName == 'LI') {
+      //   alert(ev.target.innerHTML)
+      // }
+
+      if(ev.target.nodeName == 'UL') {
+        return false;
+        console.log(11)
+      }
+      alert(ev.target.innerHTML)
+      
+    }
+
+    a.onclick = function() {
+      alert(11)
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //p1,p2,p3依次调用
+    // let p1 = new Promise((resolve, reason) => {
+    //   setTimeout(() => {
+    //     resolve('p1')
+    //   }, 3000)
+    // }).then(value => {
+    //   console.log(value)
+    //   let p2 = new Promise((resolve, reason) => {
+    //     setTimeout(() => {
+    //       resolve('p2', value)
+    //     }, 2000)
+    //   })
+    //   return p2;
+    // }).then((value) => {
+    //   console.log(value);
+    //   let p3 = new Promise((resolve, reason) => {
+    //     setTimeout(() => {
+    //       resolve('p3')
+    //     }, 1000)
+    //   })
+    //   return p3;
+    // }).then((value) => {
+    //   console.log(value)
+    // })
+
+    //p3的结果需要依赖p1和p2
+
+
+    let p3 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject('p3')
+      }, 1000)
+    }).then((value) => {
+      console.log(11);
+      console.log(value)
+    }).catch((reason) => {
+        console.log(reason)
+    }).then(() => {
+      console.log(555)
+    })
+
+  </script>
+</body>
+
+</html>

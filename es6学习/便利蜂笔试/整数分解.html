@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function foo(n,k) {
+        // let arr = new Array(n);
+        // for(let i = 0; i < n ; i++) {
+        //     arr[i] = 0;
+        // }
+        // console.log(arr);
+        if(n < 30) {
+            return
+        }
+        if(n === 0 || k === 1){
+            return 1
+        }
+        if(k > n) {
+            return foo(n,k)
+        }else {
+            return foo(n,k-1) + foo(n-k,k)
+        }
+
+    }
+
+    function count() {
+
+    }
+    console.log(foo(5,2))
+</script>
+</body>
+</html>
+</html>
