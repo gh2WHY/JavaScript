@@ -37,18 +37,81 @@
     //p3的结果需要依赖p1和p2
 
 
+    // let p3 = new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     reject('p3')
+    //   }, 1000)
+    // }).then((value) => {
+    //   console.log(11);
+    //   console.log(value)
+    // }).catch((reason) => {
+    //     console.log(reason)
+    // }).then(() => {
+    //   console.log(555)
+    // })
+
+    // new Promise((resolve,reject) => {
+    //   var t = new Date();
+    //   setTimeout(() => {
+    //     if(t%2 === 0) {
+    //       resolve('执行成功')
+    //     }else{
+    //       reject('执行失败');
+    //     }
+    //   })
+    // }).then((value)=> {
+    //   console.log(value)
+    // },err =>{
+    //   console.log(err);
+    // })
+
+
+
+    // p1 是一个 Promise, 秒之后变为 rejected p2 的状态在 2秒之后改变，
+    // resolve 方法返回的是 pl 。由于 p2 返回的是另一个 Promise ，导致 p2的状态无效，由 pl
+    // 状态决定 p2 的状态。
+
+
+    // 所以，后面的 then 语句都变成针对后者 pl的。再过1 秒， pl 变为
+    // resolve ，触发 then 方法指定的回调函数。
+    let p1 = new Promise((resolve, reject) => {
+      var t = new Date();
+      setTimeout(() => {
+        resolve(1111);
+      }, 2000)
+    })
+
+    let p2 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(p1);
+      }, 1000)
+    })
+
     let p3 = new Promise((resolve, reject) => {
       setTimeout(() => {
-        reject('p3')
+        resolve(p2);
       }, 1000)
-    }).then((value) => {
-      console.log(11);
-      console.log(value)
-    }).catch((reason) => {
-        console.log(reason)
-    }).then(() => {
-      console.log(555)
     })
+
+    p3
+      .then(value => { console.log(value) })
+      .catch(err => { console.log(err) })
+
+    // 上面的代码中p1的状态会传递给p2,也就是说p1的状态会决定p2的状态,如果p1的状态是pendding,
+    // 那么p2的回调函数就会等待p1的状态改变,如果p1的状态已经是resolve或者reject,那么p2就会立即
+    // 改变,p2和p3之间的关系相同
+
+
+    // 另外一个值得注意的点是:调用resolve或reject并不会终止promise构造器的执行
+    new Promise(resolve => {
+      resolve(1);
+      console.log(2);
+    }).then(
+      value => console.log(value),
+      err => console.log(err)
+
+    )
+
 
   </script>
 </body>
