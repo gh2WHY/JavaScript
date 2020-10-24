@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* div {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+      border-right : 2px solid green;
+      transition-duration:  2s;  /*动画持续时间*/
+      /* transition-delay: 1s;  延迟执行时间 */
+      /* transition-timing-function: linear;  动画的变化速度 */
+    /* } */
+    /*触发式动画*/
+    /* div:hover { */
+      /* background-color:red; */
+      /* width: 400px; */
+      /* transform: rotate(360deg); */
+      /* transform-origin: 50% 50%; */
+      
+    /* } */ 
+
+
+    /* 主动动画 */
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color:orange;
+      animation: demo 3s;
+      animation-play-state : paused ;
+    }
+
+    div:hover {
+      animation-play-state : running;
+    }
+
+    @keyframes demo {
+      0% {}
+
+      100% {
+        transform: rotate(360deg);
+        transform-origin: 50% 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <script>
+
+  </script>
+</body>
+</html>

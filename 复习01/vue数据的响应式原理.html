@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    {{name}}
+    {{name}}
+    {{name}}
+    {{age}}
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+    let obj = {
+      name : 'why',
+      age : 18,
+    }
+
+    Object.keys(obj).forEach(key => {
+      let value = obj[key];
+      // console.log(value)
+      Object.defineProperty(obj,key,{
+        //属性值发生改变调用set
+        set(newValue) {
+          console.log('监听' + key +'属性发生了变化' );
+          //值发生改变了之后,谁用告诉谁
+          //但是如何知道是谁在用
+          //根据解html代码,获取有哪些人用到了
+          //张三/李四/王五
+          value = newValue
+          
+          //值一旦发生改变,就调用dep对象的notify方法,通知
+          dep.notify();
+        },
+        //获取属性值调用get
+        get() {
+          console.log('h获取' + key +'属性' );
+
+          //张三
+          //李四
+          //王五 
+
+          //得知数据重新获取之后页面也发生改变
+          return value;
+        }
+      })
+    })
+
+    class Dep{
+      constructor() {
+        //存储要监听的属性,是数组
+        this.subs = []
+      }
+      //数据一旦发生改变,在数组subs中添加数据
+      addsubs(Watcher) {
+        this.subs.push(Watcher)
+      }
+
+      notify() {
+        //找到所有的订阅制,然后调用订阅者自身的update
+        this.subs.forEach(item => {
+          console.log(item)
+          item.updated();
+        })
+      }
+    }
+
+    class Watcher {
+      constructor(name) {
+        this.name = name  //改变的属性
+      }
+
+      updated () {
+        console.log(this.name + '属性发生了变化')
+      }
+    }
+    const dep = new Dep();
+    const w1 = new Watcher('张三')
+    dep.addsubs(w1)
+
+    const w2 = new Watcher('李四')
+    dep.addsubs(w2)
+
+    const w3 = new Watcher('王五')
+    dep.addsubs(w3)
+    dep.notify();
+    let vm = new Vue({
+      el : '#app',
+      data(){
+        return {
+          name : 'why',
+          age : 18,
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    function foo(str) {
+      var arr = str.split('');
+      var newArr = [];
+      var sum = 0;
+      arr.forEach(item => {
+        if(item % 2 !== 0) {
+          newArr.push(item)
+        }
+      })
+      for(let i = 0 ; i < newArr.length ; i++) {
+        sum += parseInt(newArr[i]);
+      }
+      console.log(sum)
+    } 
+    foo('12345')
+    // console.log(foo('12345'))
+  </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function foo(str) {
+      var arr = str.split('');
+      var newArr = [];
+      for(let i = 0 ; i < arr.length ; i++) {
+        let item = newArr.indexOf(arr[i]) 
+        console.log(item)
+        if(item === -1) {
+          newArr.push(arr[i]);
+        }
+      }
+      return newArr.join('');
+    }
+    console.log(foo('goodgoodstudy'))
+  </script>
+</body>
+</html>

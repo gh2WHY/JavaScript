@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function foo(num) {
+      var arr = []
+      for(let i = num ; i > 0; i--) {
+       arr.push('*'.repeat(i)) 
+      }
+      res = arr.join('-')
+      console.log(res)
+    }
+    foo(4)
+
+    var reg = /a/g;
+    console.log(reg.test('a'));
+    console.log(reg.test('abac'));
+    console.log(reg.test('ababa'));
+
+    var obj = {
+      x : 10,
+      fn : function() {
+        console.log(this);
+        console.log(this.x);
+      }
+    }
+    obj.fn();
+    var fn1 = obj.fn();
+    fn1();
+  </script>pt

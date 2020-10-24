@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //1. 密码长度最少8位最多16位
+    //2. 包含大小写字母数字其他字符,至少出现两种
+    //3. 不能有相同字符长度大于2的子串重复
+
+    //简单:符合要求
+    //复杂 : 三种字符组合,,可以有相同的字符子串
+    //超棒 : 
+
+    function arr(str) {
+      str = str.split(',')
+      for (let i = 0; i < str.length; i++) {
+        str[i] = parseInt(str[i])
+      }
+      console.log(str);
+    }
+
+    arr('1,2,3,4,6')
+  </script>
+</body>
+
+</html>

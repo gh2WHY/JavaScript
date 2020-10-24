@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 防抖,在某个时间内,没有再次调用这个函数的时候,才会真正的执行这个函数
+    // 1. 当事件触发时,对应的函数不会立即执行,而是会等待一定的时间
+    // 2. 如果事件被频繁的触发,那么事件的执行会被一直推迟
+    // 3. 只有触发函数的事件间隔超过设定的时间,函数才会被真正的执行
+
+    // 防抖,手机锁屏案例,输入框搜索案例
+
+    function debounce(fn,delay) {
+      var timer = null;
+      return function() {
+        if(timer) clearTimeout(timer);
+        //获取this和arguments
+        var _this = this;
+        var _arg = arguments;
+        timer = setTimeout(function() {
+          fn.apply(_this,_arg);
+        },delay)
+      }
+    }
+
+
+    //节流:就算频繁触发,也只会按照一定的频率触发
+    // 最常见的应用场景,飞机大战
+
+    // 节流函数使用时间戳的方式来完成
+    // last 记录上次执行的事件 
+    //每次执行之前,获取一下当前的执行时间now now - last = interval
+    //那么函数执行,并且将now 赋值给 last
+
+    function throttle(fn,interval) {
+      var last = 0;
+      return function() {
+        var _this = this;
+        var _args = arguments;
+
+        //获取当前时间
+        var now = new Date().getTime();
+        if(now - last > interval) {
+          fn.apply(_this,_args);
+          last = now;
+        }
+
+      }
+    }
+  </script>
+</body>
+</html>

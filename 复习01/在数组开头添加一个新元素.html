@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //第一题
+    function foo(arr,item) {
+      var newArr = [...arr];
+      newArr.unshift(item);
+      return newArr;
+    }
+
+    foo([1,2,4],7)
+
+
+    //回文数
+    function foo1(x) {
+      // if(x < 0) {
+      //   return false;
+      // }
+      // var d = 0, f = x;
+      // while(f > 0) {
+      //   d = d*10 + f%10;
+      //   f = (f - f%10)/10;
+      // }
+      return x.toString() == x.toString().split('').reverse().join('')
+      return d === x;
+    }
+    console.log(foo1(121))
+
+    //数组快速排序
+    function foo2(arr) {
+      // for(let i = 0 ; i < arr.length - 1; i++) {
+      //   for(let j = 0 ; j < arr.length - 1 - i; j++) {
+      //     if(arr[j] > arr[j+1]) {
+      //       var tmp = arr[j];
+      //       arr[j] = arr[j+1];
+      //       arr[j+1] = tmp;
+      //     }
+      //   }
+      // }
+      // return arr;
+
+      return arr.sort((a,b) =>{
+        return a-b
+      })
+      
+    }
+   console.log( foo2([15, 5, 524, 684, 69]))
+  </script>
+</body>
+</html>
