@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      border: 1px solid orangered;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script>
+    const arr = [
+      'A用户5秒前购买了...',
+      'B用户3秒前购买了...',
+      'C用户1秒前购买了...',
+    ]
+
+    const div = document.getElementById('box');
+
+    async function changeMsg(arr) {
+      while(true) {
+        for(let i = 0 ; i < arr.length ; i++) {
+          div.innerHTML = arr[i];
+          await changeTime();
+        }
+      }
+    }
+    function changeTime() {
+      return new Promise((reslove) => {
+        setTimeout(() => {
+          reslove();
+        },2000)
+      })
+    }
+    changeMsg(arr);
+  </script>
+
+ 
+</body>
+
+</html>
