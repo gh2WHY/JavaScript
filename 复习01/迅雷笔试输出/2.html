@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    (function() {
+      var x = y = 1;
+      console.log(x);
+    })();
+    console.log(y);
+    console.log(x);
+
+    //在执行上面的代码的时候,首先进行 y = 1,由于没有使用var关键字,y变成全局变量
+    // 然后给x 赋值为 1 ,由于x使用了var 关键字,所以是局部变量
+    //所以在全局访问y为1
+    //访问x未定义
+  </script>
+</body>
+</html>
