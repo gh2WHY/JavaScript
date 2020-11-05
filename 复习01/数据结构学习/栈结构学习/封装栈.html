@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Stack() {
+        // 栈中的属性
+      this.items = [];
+
+      //栈中的方法
+      //push
+      Stack.prototype.push = function(el) {
+        this.items.push(el);
+      }
+
+      //pop
+      Stack.prototype.pop = function() {
+        return this.items.pop();
+      }
+
+      //peek 
+      Stack.prototype.peek =  function() {
+        return this.items[this.items.length - 1]
+      }
+
+      //isEmpty
+      Stack.prototype.isEmpty =  function() {
+        return this.items.length === 0
+      }
+
+      //size 
+      Stack.prototype.size =  function() {
+        return this.items.length 
+      }
+
+      //toString
+      Stack.prototype.toString = function() {
+        var res = '';
+        for(let i = 0 ; i < this.items.length ; i++) {
+          res += this.items[i];
+        }
+        return res;
+      }
+    }
+
+
+    var stack = new Stack();
+    // 压入元素
+    stack.push(1)
+    stack.push(23);
+    stack.push(245);
+    stack.push(7);
+    console.log(stack);  // 1 23 245 77
+    //删除最后一个
+    stack.pop();
+    stack.pop();
+    console.log(stack);  // 1 23
+    //查看第一个元素
+    var a = stack.peek();
+    console.log(a)  //23
+    //isEmpty,判断栈是否为为
+    var b = stack.isEmpty();
+    console.log(b)  //false
+    //返回栈的长度
+    var c = stack.size();
+    console.log(c) //2
+
+    //十进制转二进制
+    function dec2bin(num) {
+      var stack = new Stack();
+      var r;
+      while(num > 0) {
+        rem = num % 2;
+        num = Math.floor(num / 2);
+        //将余数压入栈中
+        stack.push(rem);
+      }
+      console.log(stack)
+      var binNum = ''
+      while(!stack.isEmpty()) {
+        binNum += stack.pop();
+      }
+      return binNum;
+    }
+    console.log(dec2bin(10))
+  </script>
+</body>
+</html>
