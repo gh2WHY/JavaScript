@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="./stack.js"></script>
+  <script>
+    const M = 8;
+    const N = 8;
+    const MaxSize = M * N;
+    var mg = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 1, 0, 0, 0, 1, 0, 1],
+    [1, 0, 0, 1, 0, 0, 0, 1, 0, 1],
+    [1, 0, 0, 0, 0, 1, 1, 0, 0, 1],
+    [1, 0, 1, 1, 1, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+    [1, 0, 1, 0, 0, 0, 1, 0, 0, 1],
+    [1, 0, 1, 1, 1, 0, 1, 1, 0, 1],
+    [1, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    ]
+    // const mg = [[1, 1, 1, 1, 1], [1, 0, 0, 1, 1], [1, 1, 0, 0, 1], [1, 1, 1, 0, 1], [1, 1, 1, 1, 1]]
+
+    function Box(i, j, di) {
+      this.x = i;
+      this.y = j;
+      this.di = di;
+    }
+
+    function direction(incX, incY) {
+      this.incX = incX;
+      this.incY = incY;
+    }
+    var Arr = new Array(4);
+    var dir = [[0, 1], [1, 0], [0, -1], [-1, 0]]
+    for (let i = 0; i < Arr.length; i++) {
+      Arr[i] = new direction(dir[i][0], dir[i][1])
+    }
+
+    function mgPath(mg, Arr,M, N) {
+      var temp = new Box();
+      var x, y, di;   //用来保存当前处理单元格的坐标
+      var row, col;  //保存下一次处理单元格的坐标
+      mg[1][1] = -1;  //当前个子无法走
+      temp.x = 1;
+      temp.y = 1;
+      temp.di = -1;
+      var s = new Stack();
+      s.push(temp);
+      while (!s.isEmpty()) {
+        temp = s.pop();
+        x = temp.x;
+        y = temp.y;
+        di = temp.di + 1;
+        while (di < 4) {
+          row = x + Arr[di].incX;
+          col = y + Arr[di].incY;
+          if (mg[row][col] === 0) {
+            temp.x = x;
+            temp.y = y;
+            temp.di = di;
+            var a = JSON.parse(JSON.stringify(temp))
+            s.push(a);
+            x = row;
+            y = col;
+            mg[row][col] = -1;
+            if (x === M && y === N) {
+              temp.x = M;
+              temp.y = N;
+              temp.di = di;
+              var a = JSON.parse(JSON.stringify(temp))
+              s.push(a);
+              return ouput(s);
+            } else {
+              di = 0;
+            }
+          } else {
+            di++;
+          }
+        }
+      }
+      console.log('该迷宫没有路')
+    }
+    var a = mgPath(mg, Arr, M, N)
+    console.log(a)
+    function ouput(data) {
+      var result = [];
+      while(!data.isEmpty()) {
+        var a = data.pop();
+    
+        var local = [a.x,a.y]
+        result.push(local)
+      }
+      return result.reverse()
+    }
+  </script>
+</body>
+
+</html>

@@ -45,6 +45,16 @@
         }
         return res;
       }
+
+      //销毁栈
+      // Stack.prototype.destory = function() {
+      //   this.items = null;
+      // }
+
+      //修改栈顶元素的值
+      Stack.prototype.update = function(el) {
+        this.items[this.items.length - 1] = el;
+      }
     }
 
 
@@ -55,20 +65,24 @@
     stack.push(245);
     stack.push(7);
     console.log(stack);  // 1 23 245 77
+    stack.update(66)
+    console.log(stack)
     //删除最后一个
-    stack.pop();
-    stack.pop();
-    console.log(stack);  // 1 23
-    //查看第一个元素
-    var a = stack.peek();
-    console.log(a)  //23
-    //isEmpty,判断栈是否为为
-    var b = stack.isEmpty();
-    console.log(b)  //false
-    //返回栈的长度
-    var c = stack.size();
-    console.log(c) //2
+    // stack.pop();
+    // stack.pop();
+    // console.log(stack);  // 1 23
+    // //查看第一个元素
+    // var a = stack.peek();
+    // console.log(a)  //23
+    // //isEmpty,判断栈是否为为
+    // var b = stack.isEmpty();
+    // console.log(b)  //false
+    // //返回栈的长度
+    // var c = stack.size();
+    // console.log(c) //2
 
+    // var d = stack.destory();
+    // console.log(d)
     //十进制转二进制
     function dec2bin(num) {
       var stack = new Stack();
@@ -79,14 +93,55 @@
         //将余数压入栈中
         stack.push(rem);
       }
-      console.log(stack)
       var binNum = ''
       while(!stack.isEmpty()) {
         binNum += stack.pop();
       }
       return binNum;
     }
-    console.log(dec2bin(10))
+    console.log(dec2bin(10)) //1010
+
+
+
+
+    e = st.peek();
+        i = e.i; j = e.j; di = e.di;
+        if (i == xe && j == ye) { //找到了出口,输出该路径
+          k = 0;
+          while (!st.isEmpty()) {
+            st.pop();
+            path[k++] = e;
+          }
+          while (k >= 1) {
+            k--;
+            console.log(path[k].i, path[k].j);
+          }
+          st.destory();
+          return true;
+        }
+        while (di < 4 && !find) {
+          di++;
+          switch (di) {
+            case 0: il = i - 1; jl = j; break;
+            case 1: il = i; jl = j + 1; break;
+            case 2: il = i + 1; jl = j; break;
+            case 1: il = i; jl = j - 1; break;
+          }
+          if (mg[il][jl] === 0) find = true;
+        }
+        if (find) {
+          var a = st.peek();
+          a.di = di; //修改栈顶元素di的值
+          e.i = il; e.j = jl; e.di = -1;
+          st.push(e);
+          mg[il, jl] = -1;
+        } else {
+          st.pop(e);
+          mg[e.i][e.j] = 0;
+        }
+      }
+      st.destory();
+      return false;
   </script>
 </body>
 </html>
