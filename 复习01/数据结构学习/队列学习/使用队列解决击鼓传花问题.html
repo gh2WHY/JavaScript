@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./queue.js" type=
+  "text/javascript" ></script>
+  <script>
+    //函数接受两个参数,姓名的数组和数字num
+    function playGames(nameList,num) {
+      //创建一个队列
+      var queue = new Queue();
+      //将所有人的名字放在列表当中
+      for(var i = 0 ; i < nameList.length ; i++) {
+        queue.enqueue(nameList[i]);
+      }
+      //队列长度大于1开始循环
+      while(queue.size() > 1) {
+        //从0到num开始循环,如果不等于num,从队首删除,移入队尾
+        for(let i = 0 ; i < num ; i++) {
+          //删除队首
+          var a = queue.dequeue();
+          //队首元素进入队尾
+          queue.enqueue(a);
+        }
+        //等于num之后,删除该元素
+        queue.dequeue()
+      }
+
+      //检查队列长度
+      console.log(queue.size());
+
+      //查看最后剩下的人
+      var endName = queue.font();
+      return endName
+    }
+    // var name = ['荣','贵','生','欢','宇','苗','彭']
+   var name =  playGames( ['荣','贵','生','欢','宇','彭'],4);
+   console.log(name);  //荣
+  </script>
+</body>
+</html>

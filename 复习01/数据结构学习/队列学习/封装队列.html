@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Queue() {
+      this.items = []
+      //下面定义队列的常用方法
+      Queue.prototype.enqueue = function(el) {
+        this.items.push(el);
+      }
+      Queue.prototype.dequeue = function() {
+        return this.items.shift();
+      }
+      Queue.prototype.font = function() {
+        return this.items[0]
+      }
+      Queue.prototype.isEmpty = function() {
+        return this.items.length === 0
+      }
+      Queue.prototype.size = function() {
+        return this.items.length;
+      }
+      Queue.prototype.toString = function() {
+        let  res = '';
+        for(let i = 0 ; i < this.items.length ; i++) {
+          res += this.items[i] + ''
+        }
+        return res;
+      }
+    }
+
+
+    //新建队列
+    var queue = new Queue();
+
+    //插入元素
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    console.log(queue);  //[1,2,3]
+
+    //删除队尾的元素 
+    queue.dequeue();
+    console.log(queue);  [2,3]
+
+    //查看队首元素
+    var a = queue.font()
+    console.log(a)  //[2]
+
+    //判断队列是否为空
+    var b = queue.isEmpty()
+    console.log(b);  //fasle
+
+    //查看队列长度
+    var c = queue.size();
+    console.log(c);  //2
+
+    //转字符串
+    var d = queue.toString();
+    console.log(d)  //'23'
+  </script>
+</body>
+</html>

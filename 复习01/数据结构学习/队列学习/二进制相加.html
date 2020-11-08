@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+// 先让 a 和 b 对齐，补齐前面的0
+// 从右往左，逐位相加，用 carry 变量记录是否 进1
+// 每一位的计算结果放到 res 数组里，最后转成字符串
+    function add(a, b) {
+      console.log(a, b)
+      // var num1 = a.split('');
+      // var num2 = b.split('');
+      // var length = Math.max(num1.length, num2.length);
+      while (a.length > b.length) {
+        b = '0' + b;
+        console.log(b)
+      }
+      while (a.length < b.length) {
+        a = '0' + a
+      }
+      console.log(a, b)
+      let res = new Array();
+      let sum = 0;
+      let tmp = 0;
+      for (let i = a.length - 1; i >= 0; i--) {
+        let sum = parseInt(a[i]) + parseInt(b[i]) + tmp;
+        if (sum >= 2) {
+          res[i] = sum - 2
+          tmp = 1
+        } else {
+          res[i] = sum
+          tmp = 0
+        }
+
+      }
+      if (tmp == 1) res.unshift(1)
+      return res.join('')
+    }
+    console.log(add("1010", '1011'))
+    console.log(add("0", '0'))
+    console.log(add("1111", '1111'))
+
+  </script>
+</body>
+
+</html>
